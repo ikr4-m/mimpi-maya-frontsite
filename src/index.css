@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+
+@plugin "daisyui" {
+  /* Cuz this app is only using one color, simplify the color */
+  themes: nord --default;
+  exclude: rootscrollgutter;
+}
