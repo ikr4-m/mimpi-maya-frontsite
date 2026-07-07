@@ -22,9 +22,16 @@ php artisan config:clear
 php artisan migrate
 php artisan filament:upgrade
 php artisan config:cache
-php artisan vendor:publish --tag="wireui.phosphoricons.config"
-php artisan vendor:publish --tag="wireui.phosphoricons.views"
 
+# Enable this if needs
+#php artisan vendor:publish --tag="wireui.phosphoricons.config"
+#php artisan vendor:publish --tag="wireui.phosphoricons.views"
+#php artisan vendor:publish --tag="filament-shield-config"
+#php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --no-interaction
+#php artisan vendor:publish --tag=filament-shield-config --no-interaction
+
+echo "laravel:filament: Generate shield resource for panel"
+php artisan shield:generate --all --panel=admin --option=policies_and_permissions
 
 SESSION="mm-fullstack"
 echo "tmux: Checking for existing tmux session for $SESSION..."
