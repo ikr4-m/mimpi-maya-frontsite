@@ -1,1 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="{{ $size }}" height="{{ $size }}" viewBox="0 0 256 256" fill="currentColor"><path d="M128 80a44 44 0 1 0-44-44 44.05 44.05 0 0 0 44 44Zm0-72a28 28 0 1 1-28 28 28.05 28.05 0 0 1 28-28Zm48 32a8 8 0 0 0-8 8v96h16V48a8 8 0 0 0-8-8Zm-96 0a8 8 0 0 0-8 8v96h16V48a8 8 0 0 0-8-8Zm152 136H24a8 8 0 0 0 0 16h208a8 8 0 0 0 0-16Z"/></svg>

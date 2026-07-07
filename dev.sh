@@ -19,6 +19,8 @@ fi
 echo "laravel: Run first time script"
 php artisan optimize:clear
 php artisan migrate
+php artisan vendor:publish --tag="wireui.phosphoricons.config"
+php artisan vendor:publish --tag="wireui.phosphoricons.views"
 
 SESSION="mm-fullstack"
 echo "tmux: Checking for existing tmux session for $SESSION..."

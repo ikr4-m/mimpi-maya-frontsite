@@ -33,8 +33,8 @@
         ];
 
         $contactLinks = [
-            ['label' => 'Instagram', 'url' => '#', 'icon' => 'instagram'],
-            ['label' => 'Twitter / X', 'url' => '#', 'icon' => 'x'],
+            ['label' => 'Instagram', 'url' => '#', 'icon' => 'instagram-logo'],
+            ['label' => 'Twitter / X', 'url' => '#', 'icon' => 'x-logo'],
             ['label' => 'Email', 'url' => 'mailto:audition@mimpimaya.com', 'icon' => 'envelope'],
         ];
 
@@ -144,10 +144,10 @@
                     <div id="about-cards" class="grid gap-4 lg:gap-5">
                         @foreach ($aboutCards as $i => $card)
                             <div class="card border border-base-300 bg-base-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(234,179,8,0.12)] lg:p-6" style="margin-left: {{ $i % 2 === 1 ? '1.5rem' : '0' }}">
-                                <div class="flex items-start gap-4">
-                                    <span class="text-primary">
-                                        @include("components.icons.{$card['icon']}", ['size' => 32])
-                                    </span>
+                                <div class="flex flex-row items-center justify-center gap-5">
+                                    <div class="w-[30px] h-[30px] text-primary">
+                                        <x-icon name="{{ $card['icon'] }}" />
+                                    </div>
                                     <div>
                                         <h3 class="mb-1 text-lg font-bold">{{ $card['title'] }}</h3>
                                         <p class="text-sm text-base-content/70 lg:text-base">{{ $card['description'] }}</p>
@@ -223,7 +223,9 @@
                     @foreach ($requirements as $req)
                         <div class="card border border-base-300 bg-base-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(234,179,8,0.12)] lg:p-6">
                             <div class="mb-3 inline-flex rounded-lg bg-primary/10 p-2.5 text-primary">
-                                @include("components.icons.{$req['icon']}", ['size' => 28])
+                                <div class="w-[50%] m-auto">
+                                    <x-icon name="{{ $req['icon'] }}" />
+                                </div>
                             </div>
                             <h3 class="mb-2 text-lg font-bold">{{ $req['title'] }}</h3>
                             <p class="text-sm text-base-content/70 lg:text-base">{{ $req['description'] }}</p>
@@ -246,7 +248,9 @@
                     @foreach ($benefits as $benefit)
                         <div class="card border border-base-300 bg-base-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(234,179,8,0.12)] lg:p-6">
                             <div class="mb-3 inline-flex rounded-lg bg-primary/10 p-2.5 text-primary">
-                                @include("components.icons.{$benefit['icon']}", ['size' => 28])
+                                <div class="w-[50%] m-auto">
+                                    <x-icon name="{{ $benefit['icon'] }}" />
+                                </div>
                             </div>
                             <h3 class="mb-2 text-lg font-bold">{{ $benefit['title'] }}</h3>
                             <p class="text-sm text-base-content/70 lg:text-base">{{ $benefit['description'] }}</p>
@@ -277,7 +281,9 @@
                     <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
                         @foreach ($contactLinks as $contact)
                             <a href="{{ $contact['url'] }}" class="btn btn-ghost btn-sm gap-2 text-base-content/70 hover:text-primary">
-                                @include("components.icons.{$contact['icon']}", ['size' => 20])
+                                <div class="w-[30px] h-[30px]">
+                                    <x-icon name="{{ $contact['icon'] }}" />
+                                </div>
                                 {{ $contact['label'] }}
                             </a>
                         @endforeach
