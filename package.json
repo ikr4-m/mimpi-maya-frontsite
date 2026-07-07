@@ -4,9 +4,12 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite --clearScreen=false --debug=true"
+        "dev": "vite --clearScreen=false --debug=true",
+        "lint": "biome lint --write --files-ignore-unknown=true --no-errors-on-unmatched",
+        "format": "biome format --write --files-ignore-unknown=true --no-errors-on-unmatched"
     },
     "devDependencies": {
+        "@biomejs/biome": "^2.5.2",
         "@tailwindcss/vite": "^4.3.2",
         "@types/alpinejs": "^3.13.11",
         "concurrently": "^9.0.1",

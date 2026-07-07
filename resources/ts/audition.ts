@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import onLoadingDone from './lib/onLoadingDone';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -156,8 +157,7 @@ function initHeroEntrance(): () => void {
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 });
 
-  tl
-    .fromTo(chapterHero, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6 })
+  tl.fromTo(chapterHero, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6 })
     .fromTo(titleHero, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.3')
     .fromTo(tagline, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.5')
     .fromTo(dateBadge, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.4')
@@ -175,100 +175,154 @@ function initScrollAnimations(): void {
   const aboutSection = document.getElementById('about');
 
   if (aboutHeading && aboutSection) {
-    gsap.fromTo(aboutHeading, { x: -50, opacity: 0 }, {
-      scrollTrigger: { trigger: aboutSection, start: 'top 75%', toggleActions: 'play none none reverse' },
-      x: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-    });
+    gsap.fromTo(
+      aboutHeading,
+      { x: -50, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+      },
+    );
   }
 
   if (aboutCards && aboutCards.children.length) {
-    gsap.fromTo(aboutCards.children, { x: 50, opacity: 0 }, {
-      scrollTrigger: { trigger: aboutCards, start: 'top 75%', toggleActions: 'play none none reverse' },
-      x: 0, opacity: 1, stagger: 0.15, duration: 0.7, ease: 'power3.out',
-    });
+    gsap.fromTo(
+      aboutCards.children,
+      { x: 50, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: aboutCards,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+        x: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 0.7,
+        ease: 'power3.out',
+      },
+    );
   }
 
   // Timeline line
   const timelineLine = document.getElementById('timeline-line');
   const timelineSection = document.getElementById('timeline');
   if (timelineLine && timelineSection) {
-    gsap.fromTo(timelineLine, { scaleY: 0 }, {
-      scrollTrigger: { trigger: timelineSection, start: 'top 70%', end: 'bottom 50%', scrub: 1 },
-      scaleY: 1, transformOrigin: 'top center', ease: 'none',
-    });
+    gsap.fromTo(
+      timelineLine,
+      { scaleY: 0 },
+      {
+        scrollTrigger: { trigger: timelineSection, start: 'top 70%', end: 'bottom 50%', scrub: 1 },
+        scaleY: 1,
+        transformOrigin: 'top center',
+        ease: 'none',
+      },
+    );
   }
 
   // Timeline items slide-in
   const timelineItems = document.querySelectorAll('.timeline-item');
   timelineItems.forEach((item, index) => {
     const isLeft = index % 2 === 0;
-    gsap.fromTo(item, { x: isLeft ? -40 : 40, opacity: 0 }, {
-      scrollTrigger: { trigger: item, start: 'top 80%', toggleActions: 'play none none reverse' },
-      x: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
-    });
+    gsap.fromTo(
+      item,
+      { x: isLeft ? -40 : 40, opacity: 0 },
+      {
+        scrollTrigger: { trigger: item, start: 'top 80%', toggleActions: 'play none none reverse' },
+        x: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: 'power3.out',
+      },
+    );
   });
 
   // Requirements
   const reqGrid = document.getElementById('requirements-grid');
   const reqSection = document.getElementById('requirements');
   if (reqGrid && reqGrid.children.length && reqSection) {
-    gsap.fromTo(reqGrid.children, { y: 40, opacity: 0 }, {
-      scrollTrigger: { trigger: reqSection, start: 'top 70%', toggleActions: 'play none none reverse' },
-      y: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power3.out',
-    });
+    gsap.fromTo(
+      reqGrid.children,
+      { y: 40, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: reqSection,
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'power3.out',
+      },
+    );
   }
 
   // Benefits
   const benefitsGrid = document.getElementById('benefits-grid');
   const benefitsSection = document.getElementById('benefits');
   if (benefitsGrid && benefitsGrid.children.length && benefitsSection) {
-    gsap.fromTo(benefitsGrid.children, { y: 40, opacity: 0 }, {
-      scrollTrigger: { trigger: benefitsSection, start: 'top 70%', toggleActions: 'play none none reverse' },
-      y: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power3.out',
-    });
+    gsap.fromTo(
+      benefitsGrid.children,
+      { y: 40, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: benefitsSection,
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'power3.out',
+      },
+    );
   }
 
   // CTA
   const ctaContent = document.getElementById('cta-content');
   const ctaSection = document.getElementById('cta-section');
   if (ctaContent && ctaSection) {
-    gsap.fromTo(ctaContent, { y: 50, opacity: 0 }, {
-      scrollTrigger: { trigger: ctaSection, start: 'top 70%', toggleActions: 'play none none reverse' },
-      y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-    });
+    gsap.fromTo(
+      ctaContent,
+      { y: 50, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ctaSection,
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+      },
+    );
   }
 
   ScrollTrigger.refresh();
-}
-
-function onOverlayGone(callback: () => void): void {
-  if ((window as any).__overlayGone) {
-    callback();
-    return;
-  }
-  window.addEventListener('loading-overlay-hidden', callback, { once: true });
 }
 
 // --- Main init ---
-const cleanups: Array<() => void> = [];
-
-let cleanupSparkle: (() => void) | null = null;
-let cleanupParallax: (() => void) | null = null;
-let cleanuplenis: (() => void) | null = null;
-
-cleanuplenis = initLenis();
-
-onOverlayGone(() => {
-  const cleanupHero = initHeroEntrance();
-  initScrollAnimations();
-  cleanupSparkle = initSparkleCanvas();
-  cleanupParallax = initParallax();
-
-  cleanups.push(cleanupHero);
-});
-
-// Refresh after fonts/layout settle
 window.addEventListener('load', () => {
+  initLenis();
+
   ScrollTrigger.refresh();
   setTimeout(() => ScrollTrigger.refresh(), 500);
+
+  onLoadingDone(() => {
+    initHeroEntrance();
+    initScrollAnimations();
+    initSparkleCanvas();
+    initParallax();
+  });
 });

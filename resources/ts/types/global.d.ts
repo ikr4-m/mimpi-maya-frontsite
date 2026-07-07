@@ -5,8 +5,7 @@ declare global {
     gsap: typeof import('gsap').default;
     Alpine: typeof import('alpinejs').default;
     __lenis: Lenis | null;
+    __overlayGone: boolean;
     pages: Array<{ title: string; url: string }>;
   }
 }
-
-export {};

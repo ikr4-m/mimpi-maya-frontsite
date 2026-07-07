@@ -1,20 +1,5 @@
 <div
-    x-data="{
-        open: false,
-        get currentPage() {
-            const path = window.location.pathname;
-            if (path === '/') return '/';
-            const found = window.pages.find(p => p.url !== '/' && (path === p.url || path.startsWith(p.url + '/')));
-            return found ? found.url : null;
-        },
-    }"
-    x-init="
-        $watch('open', (val) => {
-            if (typeof Lenis !== 'undefined' && window.__lenis) {
-                val ? window.__lenis.stop() : window.__lenis.start();
-            }
-        });
-    "
+    x-data="navbar"
     class="drawer drawer-end lg:drawer-open"
 >
     <input id="nav-drawer" type="checkbox" class="drawer-toggle" x-model="open" />
