@@ -2,12 +2,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 
-declare global {
-  interface Window {
-    __lenis: Lenis | null;
-  }
-}
-
 gsap.registerPlugin(ScrollTrigger);
 
 function initSparkleCanvas(): () => void {
