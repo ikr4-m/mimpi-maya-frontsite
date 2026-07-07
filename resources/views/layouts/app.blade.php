@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en" data-theme="mm-daisy">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{{ $title ?? config('app.name') }}</title>
+        <title>Mimpi Maya - {{ $title ?? 'Beranda' }}</title>
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="icon" sizes="any" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/webp" href="{{ asset('images/logo.webp') }}" />
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}" />
+
+        @vite(['resources/css/app.css', 'resources/ts/app.ts'])
+        @stack('head_scripts')
 
         @livewireStyles
     </head>
     <body>
-        {{ $slot }}
+        <x-loading-overlay />
+        <x-navbar>
+            {{ $slot }}
+        </x-navbar>
 
         @livewireScripts
     </body>

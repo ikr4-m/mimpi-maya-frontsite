@@ -1,10 +1,67 @@
 @import 'tailwindcss';
-@import 'daisyui';
+@plugin "daisyui";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
+@plugin "daisyui/theme" {
+  name: "mm-daisy";
+  default: true;
+  prefersdark: true;
+  color-scheme: "dark";
+
+  --color-base-100: oklch(14% 0.015 50);
+  --color-base-200: oklch(18% 0.02 50);
+  --color-base-300: oklch(24% 0.025 50);
+  --color-base-content: oklch(96% 0.01 60);
+
+  --color-primary: oklch(76% 0.16 75);
+  --color-primary-content: oklch(14% 0.015 50);
+
+  --color-secondary: oklch(55% 0.10 70);
+  --color-secondary-content: oklch(98% 0.01 60);
+
+  --color-accent: oklch(84% 0.18 82);
+  --color-accent-content: oklch(14% 0.015 50);
+
+  --color-neutral: oklch(28% 0.02 50);
+  --color-neutral-content: oklch(96% 0.01 60);
+
+  --color-info: oklch(65% 0.12 240);
+  --color-info-content: oklch(98% 0.01 240);
+
+  --color-success: oklch(72% 0.11 145);
+  --color-success-content: oklch(15% 0.02 145);
+
+  --color-warning: oklch(82% 0.15 75);
+  --color-warning-content: oklch(14% 0.015 50);
+
+  --color-error: oklch(60% 0.16 30);
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0.25rem;
+  --radius-field: 2rem;
+  --radius-box: 2rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+}
+
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ShareTechMono-Regular.ttf') format('truetype');
+}
+
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-share-tech: 'Share Tech Mono', monospace;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
 }
