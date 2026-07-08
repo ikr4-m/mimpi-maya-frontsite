@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-php artisan optmize:clear
+php artisan optimize:clear
 php artisan optimize
 php artisan view:cache
 php artisan event:cache
