@@ -10,7 +10,7 @@
         <link rel="icon" type="image/webp" href="{{ asset('images/logo.webp') }}" />
         <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}" />
 
-        @vite(['resources/css/app.css', 'resources/ts/app.ts', 'resources/ts/livewire.ts'])
+        @vite(['resources/css/app.css', 'resources/ts/app.ts'])
         @stack('head_scripts')
 
         @livewireStyles
@@ -20,5 +20,7 @@
         <x-navbar>
             {{ $slot }}
         </x-navbar>
+
+        @livewireScripts
     </body>
 </html>
