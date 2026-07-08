@@ -3,13 +3,14 @@ set -euo pipefail
 
 php artisan migrate
 
-php artisan permission:cache-reset
-php artisan cache:clear
 php artisan optimize:clear
-
 php artisan optimize
-php artisan view:cache
-php artisan event:cache
+php artisan permission:cache-reset
+
 composer dump-autoload -o
 
-php artisan filament:upgrade
+# Generate when create new resource
+#php artisan shield:generate --all --panel=admin --option=policies_and_permissions
+
+# For upgrading filament
+#php artisan filament:upgrade
