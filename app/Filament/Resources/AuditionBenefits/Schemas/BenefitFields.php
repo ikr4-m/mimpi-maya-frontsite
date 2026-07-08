@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Filament\Resources\Audition\Schemas\TypeForms;
+namespace App\Filament\Resources\AuditionBenefits\Schemas;
 
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
-class ContactLinkFields
+class BenefitFields
 {
     public static function components(): array
     {
         return [
-            TextInput::make('label')
-                ->required(),
-            TextInput::make('url')
-                ->required()
-                ->url(),
             TextInput::make('icon')
                 ->required(),
+            TextInput::make('title')
+                ->required(),
+            Textarea::make('description')
+                ->columnSpanFull(),
             TextInput::make('sort_order')
                 ->required()
                 ->numeric()

@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\AuditionRequirements;
 
-use App\Filament\Resources\Audition\Schemas\TypeForms\RequirementFields;
+use App\Filament\Resources\AuditionRequirements\Schemas\RequirementFields;
 use App\Filament\Resources\AuditionRequirements\Pages\CreateAuditionRequirement;
 use App\Filament\Resources\AuditionRequirements\Pages\EditAuditionRequirement;
 use App\Filament\Resources\AuditionRequirements\Pages\ListAuditionRequirements;

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Audition\Schemas\TypeForms;
+namespace App\Filament\Resources\AuditionAboutCards\Schemas;
 
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
-class RequirementFields
+class AboutCardFields
 {
     public static function components(): array
     {

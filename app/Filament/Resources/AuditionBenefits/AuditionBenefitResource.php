@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\AuditionBenefits;
 
-use App\Filament\Resources\Audition\Schemas\TypeForms\BenefitFields;
+use App\Filament\Resources\AuditionBenefits\Schemas\BenefitFields;
 use App\Filament\Resources\AuditionBenefits\Pages\CreateAuditionBenefit;
 use App\Filament\Resources\AuditionBenefits\Pages\EditAuditionBenefit;
 use App\Filament\Resources\AuditionBenefits\Pages\ListAuditionBenefits;

@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\AuditionTimelines;
 
-use App\Filament\Resources\Audition\Schemas\TypeForms\TimelineFields;
+use App\Filament\Resources\AuditionTimelines\Schemas\TimelineFields;
 use App\Filament\Resources\AuditionTimelines\Pages\CreateAuditionTimeline;
 use App\Filament\Resources\AuditionTimelines\Pages\EditAuditionTimeline;
 use App\Filament\Resources\AuditionTimelines\Pages\ListAuditionTimelines;

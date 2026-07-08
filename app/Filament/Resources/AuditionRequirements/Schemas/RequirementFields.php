@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Audition\Schemas\TypeForms;
+namespace App\Filament\Resources\AuditionRequirements\Schemas;
 
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
-class BenefitFields
+class RequirementFields
 {
     public static function components(): array
     {

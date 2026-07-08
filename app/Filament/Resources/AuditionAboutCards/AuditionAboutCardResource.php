@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\AuditionAboutCards;
 
-use App\Filament\Resources\Audition\Schemas\TypeForms\AboutCardFields;
+use App\Filament\Resources\AuditionAboutCards\Schemas\AboutCardFields;
 use App\Filament\Resources\AuditionAboutCards\Pages\CreateAuditionAboutCard;
 use App\Filament\Resources\AuditionAboutCards\Pages\EditAuditionAboutCard;
 use App\Filament\Resources\AuditionAboutCards\Pages\ListAuditionAboutCards;

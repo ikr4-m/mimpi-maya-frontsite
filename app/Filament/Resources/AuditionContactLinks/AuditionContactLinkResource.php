@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\AuditionContactLinks;
 
-use App\Filament\Resources\Audition\Schemas\TypeForms\ContactLinkFields;
+use App\Filament\Resources\AuditionContactLinks\Schemas\ContactLinkFields;
 use App\Filament\Resources\AuditionContactLinks\Pages\CreateAuditionContactLink;
 use App\Filament\Resources\AuditionContactLinks\Pages\EditAuditionContactLink;
 use App\Filament\Resources\AuditionContactLinks\Pages\ListAuditionContactLinks;

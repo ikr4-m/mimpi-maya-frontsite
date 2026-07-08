@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Filament\Resources\Audition\Schemas\TypeForms;
+namespace App\Filament\Resources\AuditionContactLinks\Schemas;
 
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
-class TimelineFields
+class ContactLinkFields
 {
     public static function components(): array
     {
         return [
-            TextInput::make('title')
+            TextInput::make('label')
                 ->required(),
-            Textarea::make('description')
-                ->columnSpanFull(),
-            DateTimePicker::make('date')
+            TextInput::make('url')
+                ->required()
+                ->url(),
+            TextInput::make('icon')
                 ->required(),
             TextInput::make('sort_order')
                 ->required()
