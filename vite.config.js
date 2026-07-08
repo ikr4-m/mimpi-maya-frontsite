@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/ts/app.ts',
+                'resources/ts/livewire.ts',
                 'resources/ts/audition.ts',
             ],
             refresh: true,

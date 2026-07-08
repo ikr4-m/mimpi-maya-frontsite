@@ -6,3 +6,4 @@ php artisan optimize
 php artisan view:cache
 php artisan event:cache
 composer dump-autoload -o
+php artisan filament:upgrade
