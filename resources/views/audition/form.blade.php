@@ -1,10 +1,9 @@
 <x-app-layout title="Form Audisi">
     @php
-        // ponytail: hardcoded for now, env-based later
-        $FORM_URL = '';
+        $formUrl = App\Models\AuditionSetting::first()?->form_url;
     @endphp
 
-    @if (!$FORM_URL)
+    @if (!$formUrl)
         <div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-6 py-20">
             <div class="card w-full max-w-2xl border border-base-300 bg-base-200 p-8 text-center lg:p-12">
                 <h1 class="text-3xl font-bold lg:text-4xl">Form Pendaftaran Akan Segera Hadir</h1>
@@ -21,7 +20,7 @@
     @else
         <div class="container mx-auto px-6 py-8">
             <iframe
-                src="{{ $FORM_URL }}"
+                src="{{ $formUrl }}"
                 title="Form Pendaftaran Virtual Liver Audition Chapter 02"
                 class="min-h-[80vh] w-full rounded-lg border border-base-300"
             ></iframe>
