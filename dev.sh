@@ -22,6 +22,8 @@ php artisan config:clear
 php artisan migrate
 php artisan filament:upgrade
 php artisan config:cache
+php artisan ide-helper:generate
+php artisan ide-helper:models -W
 
 # Enable this if needs
 #php artisan vendor:publish --tag="wireui.phosphoricons.config"
