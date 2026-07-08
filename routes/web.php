@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::controller(IndexController::class)
+    ->name('index.')
+    ->group(fn () => [
+    Route::get('/', 'home')->name('home'),
 
-Route::get('/audition', function () {
-    return view('audition.index');
-});
-
-Route::get('/audition/form', function () {
-    return view('audition.form');
-});
+    Route::prefix('/audition')
+        ->name('audition.')
+        ->group(fn () => [
+        Route::get('/', 'audition')->name('index'),
+        Route::get('/form', 'auditionForm')->name('form'),
+    ]),
+]);

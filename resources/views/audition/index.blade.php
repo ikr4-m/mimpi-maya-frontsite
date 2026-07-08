@@ -3,22 +3,6 @@
         @vite(['resources/ts/audition.ts'])
     @endpush
 
-    @php
-        $setting = \App\Models\AuditionSetting::first();
-        $auditionStart = $setting?->audition_start;
-        $auditionEnd = $setting?->audition_end;
-
-        $timeline = \App\Models\AuditionContent::active()->byType('timeline')->orderBy('sort_order')->get();
-        $requirements = \App\Models\AuditionContent::active()->byType('requirement')->orderBy('sort_order')->get();
-        $benefits = \App\Models\AuditionContent::active()->byType('benefit')->orderBy('sort_order')->get();
-        $contactLinks = \App\Models\AuditionContent::active()->byType('contact_link')->orderBy('sort_order')->get();
-        $aboutCards = \App\Models\AuditionContent::active()->byType('about_card')->orderBy('sort_order')->get();
-
-        $isRegistrationOpen = $auditionStart && $auditionEnd
-            ? now() >= $auditionStart && now() <= $auditionEnd
-            : false;
-    @endphp
-
     <div id="audition-root" class="relative bg-base-100">
         {{-- ===== HERO SECTION ===== --}}
         <section

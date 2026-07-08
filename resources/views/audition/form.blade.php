@@ -1,8 +1,4 @@
 <x-app-layout title="Form Audisi">
-    @php
-        $formUrl = App\Models\AuditionSetting::first()?->form_url;
-    @endphp
-
     @if (!$formUrl)
         <div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-6 py-20">
             <div class="card w-full max-w-2xl border border-base-300 bg-base-200 p-8 text-center lg:p-12">
