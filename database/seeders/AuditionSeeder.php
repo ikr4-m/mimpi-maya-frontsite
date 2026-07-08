@@ -103,9 +103,10 @@ class AuditionSeeder extends Seeder
         }
 
         $contactLinks = [
-            ['label' => 'Instagram', 'url' => '#', 'icon' => 'instagram-logo'],
-            ['label' => 'Twitter / X', 'url' => '#', 'icon' => 'x-logo'],
-            ['label' => 'Email', 'url' => 'mailto:audition@mimpimaya.com', 'icon' => 'envelope'],
+            ['label' => 'Instagram', 'url' => 'https://www.instagram.com/mimpimaya_/', 'icon' => 'instagram-logo'],
+            ['label' => 'Twitter / X', 'url' => 'https://x.com/mimpimaya_', 'icon' => 'x-logo'],
+            ['label' => 'YouTube', 'url' => 'https://www.youtube.com/@MimpiMaya', 'icon' => 'youtube-logo'],
+            ['label' => 'Email', 'url' => 'mailto:mimpimayamedia@gmail.com', 'icon' => 'envelope'],
         ];
 
         foreach ($contactLinks as $index => $item) {
