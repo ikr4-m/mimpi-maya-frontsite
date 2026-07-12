@@ -2,6 +2,11 @@
     @push('head_scripts')
         @vite(['resources/ts/audition.ts'])
     @endpush
+    @push('head_meta')
+        <meta property="og:image" content="{{ asset('images/audition/mm-chap2-og-img.webp') }}" />
+        <meta property="og:title" content="Chapter 02: Your Voice. Your Character. Your Story." />
+        <meta property="og:description" content="Siapkan dirimu untuk audisi Chapter 02 MIMPI MAYA sekarang!" />
+    @endpush
 
     <div id="audition-root" class="relative bg-base-100">
         {{-- ===== HERO SECTION ===== --}}

@@ -13,6 +13,10 @@
         @vite(['resources/css/app.css', 'resources/ts/app.ts'])
         @stack('head_scripts')
 
+        <meta property="og:site_name" content="{{ env('APP_NAME', '') }}" />
+        <meta property="og:url" content="{{ url()->current() }}" />
+        @stack('head_meta')
+
         @livewireStyles
     </head>
     <body>
