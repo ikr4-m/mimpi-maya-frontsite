@@ -1,4 +1,10 @@
 <x-app-layout title="Form Audisi">
+    @push('head_meta')
+        <meta property="og:image" content="{{ asset('images/audition/mm-chap2-og-img.webp') }}" />
+        <meta property="og:title" content="Chapter 02: Your Voice. Your Character. Your Story." />
+        <meta property="og:description" content="Siapkan dirimu untuk audisi Chapter 02 MIMPI MAYA sekarang!" />
+    @endpush
+
     @if (!$formUrl)
         <div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-6 py-20">
             <div class="card w-full max-w-2xl border border-base-300 bg-base-200 p-8 text-center lg:p-12">

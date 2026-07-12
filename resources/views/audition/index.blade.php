@@ -12,10 +12,14 @@
         {{-- ===== HERO SECTION ===== --}}
         <section
             id="hero-section"
-            class="relative flex min-h-[calc(100dvh-4rem)] items-end pb-16 pt-24 lg:min-h-[calc(100vh-4rem)] lg:pb-20 lg:pt-28"
+            class="relative flex min-h-[calc(100dvh-4rem)] items-end pb-16 pt-24 lg:min-h-[calc(100vh-4rem)] lg:pb-20 lg:pt-28 overflow-hidden"
         >
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_30%,_rgba(234,179,8,0.12),_transparent_55%)]"></div>
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_90%_90%,_rgba(234,179,8,0.08),_transparent_40%)]"></div>
+
+            {{-- Lampu sorot putih --}}
+            <div class="absolute -top-[30%] right-[0%] w-[80%] h-[150%] -rotate-12 pointer-events-none z-0 bg-gradient-to-b from-white/30 via-white/10 to-transparent blur-3xl lg:right-[10%] lg:w-[50%]"></div>
+            <div class="absolute -top-[20%] right-[10%] w-[60%] h-[100%] -rotate-12 pointer-events-none z-0 mix-blend-overlay bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-2xl lg:right-[20%] lg:w-[30%]"></div>
 
             <div
                 class="absolute inset-0 opacity-[0.03]"
@@ -55,7 +59,7 @@
                         'mobile' => true,
                         'desktopClass' => 'h-[200%]',
                         'depthX' => -25,
-                        'depthY' => -10, 'duration' => 0.
+                        'depthY' => -10, 'duration' => 1.5
                     ],
                     [
                         'id' => 'vt2',
@@ -65,7 +69,7 @@
                         'desktopClass' => 'h-[155%]',
                         'depthX' => -12,
                         'depthY' => -6,
-                        'duration' => 0.8
+                        'duration' => 1.8
                     ],
                 ];
             @endphp

@@ -30,16 +30,24 @@ function initSparkleCanvas(): () => void {
     particles = [];
     const cssWidth = canvas.offsetWidth;
     const cssHeight = canvas.offsetHeight;
-    const count = Math.min(150, Math.floor((cssWidth * cssHeight) / 5000));
+    const count = Math.min(250, Math.floor((cssWidth * cssHeight) / 3000));
 
     for (let i = 0; i < count; i++) {
+      const isNearTalent = Math.random() > 0.4;
+      const x = isNearTalent
+        ? cssWidth * 0.4 + Math.random() * (cssWidth * 0.6)
+        : Math.random() * cssWidth;
+      const y = isNearTalent
+        ? cssHeight * 0.1 + Math.random() * (cssHeight * 0.9)
+        : Math.random() * cssHeight;
+
       particles.push({
-        x: Math.random() * cssWidth,
-        y: Math.random() * cssHeight,
-        size: Math.random() * 2 + 0.5,
+        x,
+        y,
+        size: Math.random() * 2 + (isNearTalent ? 1.5 : 0.5),
         speedX: (Math.random() - 0.5) * 0.3,
         speedY: (Math.random() - 0.5) * 0.3 - 0.1,
-        opacity: Math.random() * 0.6 + 0.2,
+        opacity: Math.random() * 0.6 + (isNearTalent ? 0.4 : 0.2),
         twinkleSpeed: Math.random() * 0.02 + 0.005,
       });
     }
@@ -102,7 +110,7 @@ function initParallax(): () => void {
   if (prefersReducedMotion || isTouch) return () => {};
 
   const tweens = Array.from(layers).map((el) => {
-    const duration = parseFloat(el.dataset.duration ?? '0.7');
+    const duration = parseFloat(el.dataset.duration ?? '1.5');
     return {
       x: gsap.quickTo(el, 'x', { duration, ease: 'power2.out' }),
       y: gsap.quickTo(el, 'y', { duration, ease: 'power2.out' }),
