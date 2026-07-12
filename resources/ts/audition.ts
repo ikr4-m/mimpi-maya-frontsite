@@ -155,11 +155,7 @@ function initHeroEntrance(): () => void {
   const tagline = document.getElementById('tagline');
   const dateBadge = document.getElementById('date-badge');
   const heroCta = document.getElementById('hero-cta');
-  const vt1 = document.getElementById('vt1');
-  const vt2 = document.getElementById('vt2');
-  const anne = document.getElementById('anne');
-  const kuroko = document.getElementById('kuroko');
-  const maung = document.getElementById('maung');
+  const vts = document.querySelectorAll<HTMLElement>('.hero-vt');
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 });
 
@@ -167,12 +163,11 @@ function initHeroEntrance(): () => void {
     .fromTo(titleHero, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.3')
     .fromTo(tagline, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.5')
     .fromTo(dateBadge, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.4')
-    .fromTo(heroCta, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.3')
-    .fromTo(vt1, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.8')
-    .fromTo(vt2, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85')
-    .fromTo(anne, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85')
-    .fromTo(kuroko, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85')
-    .fromTo(maung, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85');
+    .fromTo(heroCta, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.3');
+
+  if (vts.length) {
+    tl.fromTo(vts, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, '-=0.8');
+  }
 
   return () => tl.kill();
 }

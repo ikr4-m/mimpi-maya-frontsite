@@ -22,38 +22,68 @@
                 style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 12px 12px;"
             ></div>
 
-            {{-- VT Characters --}}
-            <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
-                <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
-                    <img id="anne" src="{{ asset('images/talents/anne-droitte.webp') }}" alt="anne" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-8" data-depth-y="-4" />
+            @php
+                $characters = [
+                    [
+                        'id' => 'kuroko',
+                        'src' => 'images/talents/kuroko-dille.webp',
+                        'alt' => 'kuroko',
+                        'mobile' => false,
+                        'desktopClass' => 'h-[220%]',
+                        'depthX' => -10, 'depthY' => -5
+                    ],
+                    [
+                        'id' => 'anne',
+                        'src' => 'images/talents/anne-droitte.webp',
+                        'alt' => 'anne',
+                        'mobile' => false,
+                        'desktopClass' => 'h-[192%]',
+                        'depthX' => -8,  'depthY' => -4
+                    ],
+                    [
+                        'id' => 'maung',
+                        'src' => 'images/talents/biyu-nara.webp',
+                        'alt' => 'maung',
+                        'mobile' => false,
+                        'desktopClass' => 'h-[165%]',
+                        'depthX' => -6,  'depthY' => -3
+                    ],
+                    [
+                        'id' => 'vt1',
+                        'src' => 'images/audition/vt1-trim.webp',
+                        'alt' => 'vt1',
+                        'mobile' => true,
+                        'desktopClass' => 'h-[200%]',
+                        'depthX' => -25,
+                        'depthY' => -10, 'duration' => 0.
+                    ],
+                    [
+                        'id' => 'vt2',
+                        'src' => 'images/audition/vt2-trim.webp',
+                        'alt' => 'vt2',
+                        'mobile' => true,
+                        'desktopClass' => 'h-[155%]',
+                        'depthX' => -12,
+                        'depthY' => -6,
+                        'duration' => 0.8
+                    ],
+                ];
+            @endphp
+
+            {{-- VT Characters (mobile: only vt1 & vt2) --}}
+            @foreach (array_filter($characters, fn ($c) => $c['mobile']) as $c)
+                <div class="pointer-events-none absolute z-0 w-auto lg:hidden {{ $c['id'] === 'vt1' ? 'h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12' : 'h-[135%] lg:h-[150%] top-0 right-[17.5%] pt-28 pr-8 sm:pt-56 sm:pr-8 lg:pt-36 lg:pr-12' }}">
+                    <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
+                        <img id="{{ $c['id'] }}-mobile" src="{{ asset($c['src']) }}" alt="{{ $c['alt'] }}" class="hero-vt parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="{{ $c['depthX'] }}" data-depth-y="{{ $c['depthY'] }}" @isset($c['duration']) data-duration="{{ $c['duration'] }}" @endisset />
+                    </div>
                 </div>
-            </div>
-            <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
-                <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
-                    <img id="kuroko" src="{{ asset('images/talents/kuroko-dille.webp') }}" alt="kuroko" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-10" data-depth-y="-5" />
-                </div>
-            </div>
-            <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
-                <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
-                    <img id="maung" src="{{ asset('images/talents/biyu-nara.webp') }}" alt="maung" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-6" data-depth-y="-3" />
-                </div>
-            </div>
-            <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
-                <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
-                    <img id="vt1" src="{{ asset('images/audition/vt1-trim.webp') }}" alt="vt1" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-25" data-depth-y="-10" data-duration="0.6" />
-                </div>
-            </div>
-            <div class="pointer-events-none absolute z-0 w-auto h-[135%] lg:h-[150%] top-0 right-[17.5%] pt-28 pr-8 sm:pt-56 sm:pr-8 lg:pt-36 lg:pr-12">
-                <div class="h-full w-auto max-w-none drop-shadow-[0_0_25px_rgba(234,179,8,0.25)]">
-                    <img id="vt2" src="{{ asset('images/audition/vt2-trim.webp') }}" alt="vt2" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-12" data-depth-y="-6" data-duration="0.8" />
-                </div>
-            </div>
+            @endforeach
 
             <canvas id="sparkle-canvas" class="absolute inset-0 pointer-events-none"></canvas>
 
             <div class="container relative z-10 mx-auto px-6">
                 <div class="grid items-end gap-8 lg:grid-cols-2 lg:gap-4">
-                    <div class="order-2 space-y-5 lg:order-1 lg:space-y-6">
+                    <div class="relative z-20 order-2 space-y-5 lg:order-1 lg:space-y-6">
                         <img id="chapter-hero" src="{{ asset('images/audition/chapter-hero.webp') }}" alt="Chapter 02" class="h-14 w-auto opacity-0 lg:h-16" />
                         <img id="title-hero" src="{{ asset('images/audition/audition-title-hero.webp') }}" alt="Virtual Liver Audition" class="w-full max-w-lg opacity-0 lg:max-w-xl" />
                             <p id="tagline" class="font-share-tech text-lg tracking-[0.2em] text-primary/90 uppercase opacity-0 lg:text-xl">
@@ -88,7 +118,15 @@
                         @endif
                     </div>
 
-                    <div class="order-1 hidden lg:order-2 lg:block"></div>
+                    <div class="order-1 relative hidden h-[150%] top-[36rem] lg:order-2 lg:block">
+                        <div class="pointer-events-none absolute h-full inset-x-0 bottom-0 z-0 flex items-end justify-end overflow-visible pr-2 pt-32 lg:pr-10">
+                            @foreach ($characters as $c)
+                                <div class="relative flex-shrink-0 mx-[-15rem] first:ml-0 lg:-ml-32 {{ $c['desktopClass'] }}">
+                                    <img id="{{ $c['id'] }}" src="{{ asset($c['src']) }}" alt="{{ $c['alt'] }}" class="hero-vt parallax-vt h-full w-auto max-w-none object-contain opacity-0 drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]" data-depth-x="{{ $c['depthX'] }}" data-depth-y="{{ $c['depthY'] }}" @isset($c['duration']) data-duration="{{ $c['duration'] }}" @endisset />
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
