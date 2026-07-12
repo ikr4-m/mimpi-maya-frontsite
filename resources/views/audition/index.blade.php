@@ -9,22 +9,37 @@
     @endpush
 
     <div id="audition-root" class="relative bg-base-100">
-        {{-- ===== HERO SECTION ===== --}}
-        <section
-            id="hero-section"
-            class="relative flex min-h-[calc(100dvh-4rem)] items-end pb-16 pt-24 lg:min-h-[calc(100vh-4rem)] lg:pb-20 lg:pt-28 overflow-hidden"
-        >
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_30%,_rgba(234,179,8,0.12),_transparent_55%)]"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_90%_90%,_rgba(234,179,8,0.08),_transparent_40%)]"></div>
+        {{-- ===== HERO & ABOUT WRAPPER ===== --}}
+        <div class="relative overflow-hidden">
+            {{-- Shared Background Effects --}}
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_20%,_rgba(234,179,8,0.12),_transparent_60%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_90%_70%,_rgba(234,179,8,0.08),_transparent_50%)]"></div>
 
-            {{-- Lampu sorot putih --}}
-            <div class="absolute -top-[30%] right-[0%] w-[80%] h-[150%] -rotate-12 pointer-events-none z-0 bg-gradient-to-b from-white/30 via-white/10 to-transparent blur-3xl lg:right-[10%] lg:w-[50%]"></div>
-            <div class="absolute -top-[20%] right-[10%] w-[60%] h-[100%] -rotate-12 pointer-events-none z-0 mix-blend-overlay bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-2xl lg:right-[20%] lg:w-[30%]"></div>
+            {{-- Spotlight --}}
+            <div class="audition-spotlight absolute opacity-0 -top-[10vh] right-[0%] w-[80%] h-[120vh] -rotate-12 pointer-events-none z-0 bg-gradient-to-b from-white/30 via-white/10 to-transparent blur-3xl lg:right-[10%] lg:w-[50%]"></div>
+            <div class="audition-spotlight absolute opacity-0 -top-[5vh] right-[10%] w-[60%] h-[100vh] -rotate-12 pointer-events-none z-0 mix-blend-overlay bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-2xl lg:right-[20%] lg:w-[30%]"></div>
 
+            {{-- Dotted --}}
             <div
                 class="absolute inset-0 opacity-[0.03]"
-                style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 12px 12px;"
+                style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 12px 12px; mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"
             ></div>
+
+            {{-- Sparkle --}}
+            <canvas
+                id="sparkle-canvas"
+                class="absolute inset-0 opacity-0 pointer-events-none w-full h-screen"
+                style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"
+            ></canvas>
+
+            {{-- Seamless section transition fade --}}
+            <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent to-base-100 pointer-events-none z-10"></div>
+
+            {{-- ===== HERO SECTION ===== --}}
+            <section
+                id="hero-section"
+                class="relative flex min-h-[calc(100dvh-4rem)] items-end pb-16 pt-24 lg:min-h-[calc(100vh-4rem)] lg:pb-20 lg:pt-28"
+            >
 
             @php
                 $characters = [
@@ -82,8 +97,6 @@
                     </div>
                 </div>
             @endforeach
-
-            <canvas id="sparkle-canvas" class="absolute inset-0 pointer-events-none"></canvas>
 
             <div class="container relative z-10 mx-auto px-6">
                 <div class="grid items-end gap-8 lg:grid-cols-2 lg:gap-4">
@@ -165,6 +178,7 @@
                 </div>
             </div>
         </section>
+        </div>
 
         {{-- ===== TIMELINE SECTION ===== --}}
         <section id="timeline" class="relative py-20 lg:py-32">
