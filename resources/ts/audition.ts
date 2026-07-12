@@ -30,7 +30,7 @@ function initSparkleCanvas(): () => void {
     particles = [];
     const cssWidth = canvas.offsetWidth;
     const cssHeight = canvas.offsetHeight;
-    const count = Math.min(60, Math.floor((cssWidth * cssHeight) / 25000));
+    const count = Math.min(150, Math.floor((cssWidth * cssHeight) / 5000));
 
     for (let i = 0; i < count; i++) {
       particles.push({
@@ -94,30 +94,33 @@ function initSparkleCanvas(): () => void {
 }
 
 function initParallax(): () => void {
-  const vt1 = document.getElementById('vt1');
-  const vt2 = document.getElementById('vt2');
-  if (!vt1 || !vt2) return () => {};
+  const layers = document.querySelectorAll<HTMLElement>('.parallax-vt');
+  if (layers.length === 0) return () => {};
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch = window.matchMedia('(pointer: coarse)').matches;
   if (prefersReducedMotion || isTouch) return () => {};
 
-  const moveVt1 = gsap.quickTo(vt1, 'x', { duration: 0.6, ease: 'power2.out' });
-  const moveVt1Y = gsap.quickTo(vt1, 'y', { duration: 0.6, ease: 'power2.out' });
-  const moveVt2 = gsap.quickTo(vt2, 'x', { duration: 0.8, ease: 'power2.out' });
-  const moveVt2Y = gsap.quickTo(vt2, 'y', { duration: 0.8, ease: 'power2.out' });
+  const tweens = Array.from(layers).map((el) => {
+    const duration = parseFloat(el.dataset.duration ?? '0.7');
+    return {
+      x: gsap.quickTo(el, 'x', { duration, ease: 'power2.out' }),
+      y: gsap.quickTo(el, 'y', { duration, ease: 'power2.out' }),
+      depthX: parseFloat(el.dataset.depthX ?? '-15'),
+      depthY: parseFloat(el.dataset.depthY ?? '-6'),
+    };
+  });
 
   const handleMouseMove = (e: MouseEvent) => {
-    const { clientX, clientY } = e;
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
-    const x = (clientX - centerX) / centerX;
-    const y = (clientY - centerY) / centerY;
+    const x = (e.clientX - centerX) / centerX;
+    const y = (e.clientY - centerY) / centerY;
 
-    moveVt1(x * -25);
-    moveVt1Y(y * -10);
-    moveVt2(x * -12);
-    moveVt2Y(y * -6);
+    tweens.forEach((t) => {
+      t.x(x * t.depthX);
+      t.y(y * t.depthY);
+    });
   };
 
   window.addEventListener('mousemove', handleMouseMove);
@@ -154,6 +157,9 @@ function initHeroEntrance(): () => void {
   const heroCta = document.getElementById('hero-cta');
   const vt1 = document.getElementById('vt1');
   const vt2 = document.getElementById('vt2');
+  const anne = document.getElementById('anne');
+  const kuroko = document.getElementById('kuroko');
+  const maung = document.getElementById('maung');
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 });
 
@@ -163,7 +169,10 @@ function initHeroEntrance(): () => void {
     .fromTo(dateBadge, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.4')
     .fromTo(heroCta, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.3')
     .fromTo(vt1, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.8')
-    .fromTo(vt2, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85');
+    .fromTo(vt2, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85')
+    .fromTo(anne, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85')
+    .fromTo(kuroko, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85')
+    .fromTo(maung, { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.85');
 
   return () => tl.kill();
 }

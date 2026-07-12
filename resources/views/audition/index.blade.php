@@ -25,12 +25,27 @@
             {{-- VT Characters --}}
             <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
                 <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
-                    <img id="vt1" src="{{ asset('images/audition/vt1-trim.webp') }}" alt="vt1" class="h-full w-auto max-w-none object-contain opacity-0" />
+                    <img id="anne" src="{{ asset('images/talents/anne-droitte.webp') }}" alt="anne" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-8" data-depth-y="-4" />
+                </div>
+            </div>
+            <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
+                <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
+                    <img id="kuroko" src="{{ asset('images/talents/kuroko-dille.webp') }}" alt="kuroko" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-10" data-depth-y="-5" />
+                </div>
+            </div>
+            <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
+                <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
+                    <img id="maung" src="{{ asset('images/talents/biyu-nara.webp') }}" alt="maung" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-6" data-depth-y="-3" />
+                </div>
+            </div>
+            <div class="pointer-events-none absolute z-0 w-auto h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12">
+                <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
+                    <img id="vt1" src="{{ asset('images/audition/vt1-trim.webp') }}" alt="vt1" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-25" data-depth-y="-10" data-duration="0.6" />
                 </div>
             </div>
             <div class="pointer-events-none absolute z-0 w-auto h-[135%] lg:h-[150%] top-0 right-[17.5%] pt-28 pr-8 sm:pt-56 sm:pr-8 lg:pt-36 lg:pr-12">
                 <div class="h-full w-auto max-w-none drop-shadow-[0_0_25px_rgba(234,179,8,0.25)]">
-                    <img id="vt2" src="{{ asset('images/audition/vt2-trim.webp') }}" alt="vt2" class="h-full w-auto max-w-none object-contain opacity-0" />
+                    <img id="vt2" src="{{ asset('images/audition/vt2-trim.webp') }}" alt="vt2" class="parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="-12" data-depth-y="-6" data-duration="0.8" />
                 </div>
             </div>
 
