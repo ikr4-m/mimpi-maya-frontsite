@@ -40,18 +40,22 @@ echo "tmux: Checking for existing tmux session for $SESSION..."
 tmux has-session -t "$SESSION" 2>/dev/null && tmux kill-session -t "$SESSION"
 
 echo "tmux: Setup tmux environment..."
-tmux new-session -d -s "$SESSION" -n "dev"
-tmux split-window -h -t "$SESSION:dev.0"
+PANE_ARTISAN=$(tmux new-session -d -s "$SESSION" -n "dev" -P -F "#{pane_id}")
+PANE_VITE=$(tmux split-window -h -t "$PANE_ARTISAN" -P -F "#{pane_id}")
 
 echo "tmux: Setting session to auto-close when any pane exits..."
 tmux set-hook -t "$SESSION" pane-exited "kill-session -t $SESSION"
 
 echo "tmux: Starting Laravel Artisan pane..."
-tmux send-keys -t "$SESSION:dev.0" 'php artisan serve --host 0.0.0.0' C-m
+tmux send-keys -t "$PANE_ARTISAN" 'php artisan serve --host 0.0.0.0' C-m
 
 NODE_RUNTIME=${NODE_RUNTIME:-bun}
 echo "tmux: Starting Vite pane with bun..."
-tmux send-keys -t "$SESSION:dev.1" "$NODE_RUNTIME run dev" C-m
+tmux send-keys -t "$PANE_VITE" "$NODE_RUNTIME run dev" C-m
 
 echo "tmux: Attaching to tmux session '$SESSION'..."
-tmux attach -t "$SESSION"
+if [ -n "${TMUX:-}" ]; then
+    tmux switch-client -t "$SESSION"
+else
+    tmux attach -t "$SESSION"
+fi
