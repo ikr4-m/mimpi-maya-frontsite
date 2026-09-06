@@ -8,6 +8,16 @@ Route::controller(IndexController::class)
     ->group(fn () => [
     Route::get('/', 'home')->name('home'),
 
+    Route::prefix('/talent')
+        ->name('talent.')
+        ->group(fn () => [
+        Route::get('/', 'talent')->name('index'),
+        Route::get('/{vtuber_name}', 'talentShow')->name('show'),
+    ]),
+
+    Route::get('/project', 'project')->name('project'),
+    Route::get('/about', 'about')->name('about'),
+
     Route::prefix('/audition')
         ->name('audition.')
         ->group(fn () => [

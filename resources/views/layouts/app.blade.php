@@ -21,7 +21,7 @@
     </head>
     <body>
         <x-loading-overlay />
-        <x-navbar>
+        <x-navbar :subnav="$subnav ?? null">
             {{ $slot }}
         </x-navbar>
 

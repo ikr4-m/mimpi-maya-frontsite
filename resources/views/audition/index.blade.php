@@ -2,6 +2,94 @@
     @push('head_scripts')
         @vite(['resources/ts/audition.ts'])
     @endpush
+    <x-slot:subnav>
+        <div
+            x-data="{
+                activeSection: 'hero-section',
+                updateActiveSection() {
+                    const scrollY = window.scrollY + 120;
+                    const isBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+                    if (isBottom) {
+                        this.activeSection = 'cta-section';
+                        return;
+                    }
+                    const sections = ['cta-section', 'benefits', 'requirements', 'timeline', 'hero-section'];
+                    for (const id of sections) {
+                        const el = document.getElementById(id);
+                        if (el) {
+                            const top = el.getBoundingClientRect().top + window.scrollY;
+                            if (top <= scrollY) {
+                                this.activeSection = id;
+                                return;
+                            }
+                        }
+                    }
+                    this.activeSection = 'hero-section';
+                },
+                init() {
+                    this.updateActiveSection();
+                    const onScroll = () => this.updateActiveSection();
+                    window.addEventListener('scroll', onScroll, { passive: true });
+                    if (window.__lenis) {
+                        window.__lenis.on('scroll', onScroll);
+                    } else {
+                        window.addEventListener('load', () => {
+                            if (window.__lenis) {
+                                window.__lenis.on('scroll', onScroll);
+                            }
+                        });
+                    }
+                }
+            }"
+            class="hidden lg:flex items-center gap-1.5 text-sm pr-1"
+        >
+            <a
+                href="#cta-section"
+                @click.prevent="window.__lenis ? window.__lenis.scrollTo('#cta-section', { offset: -70 }) : document.querySelector('#cta-section')?.scrollIntoView({ behavior: 'smooth' })"
+                :class="activeSection === 'cta-section' ? 'text-primary font-semibold bg-primary/15 rounded-md px-2 py-0.5 shadow-sm' : 'text-base-content/60 hover:text-primary transition-all px-1.5 py-0.5 cursor-pointer'"
+            >
+                Form
+            </a>
+            <span class="text-base-content/20 select-none">/</span>
+
+            <a
+                href="#benefits"
+                @click.prevent="window.__lenis ? window.__lenis.scrollTo('#benefits', { offset: -70 }) : document.querySelector('#benefits')?.scrollIntoView({ behavior: 'smooth' })"
+                :class="activeSection === 'benefits' ? 'text-primary font-semibold bg-primary/15 rounded-md px-2 py-0.5 shadow-sm' : 'text-base-content/60 hover:text-primary transition-all px-1.5 py-0.5 cursor-pointer'"
+            >
+                Benefit
+            </a>
+            <span class="text-base-content/20 select-none">/</span>
+
+            <a
+                href="#requirements"
+                @click.prevent="window.__lenis ? window.__lenis.scrollTo('#requirements', { offset: -70 }) : document.querySelector('#requirements')?.scrollIntoView({ behavior: 'smooth' })"
+                :class="activeSection === 'requirements' ? 'text-primary font-semibold bg-primary/15 rounded-md px-2 py-0.5 shadow-sm' : 'text-base-content/60 hover:text-primary transition-all px-1.5 py-0.5 cursor-pointer'"
+            >
+                SnK
+            </a>
+            <span class="text-base-content/20 select-none">/</span>
+
+            <a
+                href="#timeline"
+                @click.prevent="window.__lenis ? window.__lenis.scrollTo('#timeline', { offset: -70 }) : document.querySelector('#timeline')?.scrollIntoView({ behavior: 'smooth' })"
+                :class="activeSection === 'timeline' ? 'text-primary font-semibold bg-primary/15 rounded-md px-2 py-0.5 shadow-sm' : 'text-base-content/60 hover:text-primary transition-all px-1.5 py-0.5 cursor-pointer'"
+            >
+                Jadwal
+            </a>
+            <span class="text-base-content/20 select-none">/</span>
+
+            <a
+                href="#hero-section"
+                @click.prevent="window.__lenis ? window.__lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' })"
+                :class="activeSection === 'hero-section' ? 'text-primary font-semibold bg-primary/15 rounded-md px-2 py-0.5 shadow-sm' : 'text-base-content/60 hover:text-primary transition-all px-1.5 py-0.5 cursor-pointer'"
+            >
+                Banner
+            </a>
+
+            <div class="h-4 w-px bg-base-content/20 mx-1"></div>
+        </div>
+    </x-slot:subnav>
     @push('head_meta')
         <meta property="og:image" content="{{ asset('images/audition/mm-chap2-og-img.webp') }}" />
         <meta property="og:title" content="Chapter 02: Your Voice. Your Character. Your Story." />

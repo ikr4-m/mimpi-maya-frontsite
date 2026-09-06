@@ -1,3 +1,5 @@
+@props(['subnav' => null])
+
 <div
     x-data="navbar"
     class="drawer drawer-end lg:drawer-open"
@@ -12,6 +14,7 @@
             </div>
 
             <div class="flex flex-row items-center gap-1">
+                {{ $subnav }}
                 <span x-show="currentPage" class="lg:pr-3 text-primary" x-text="currentPage ? window.pages.find(p => p.url === currentPage)?.title : ''"></span>
                 <label
                     for="nav-drawer"
@@ -48,12 +51,20 @@
             <ul class="menu w-full grow place-content-center gap-2">
                 @foreach([
                     ['title' => 'Halaman Utama', 'url' => '/', 'icon' => 'house'],
+                    ['title' => 'Talenta', 'url' => '/talent', 'icon' => 'users'],
+                    ['title' => 'Proyek', 'url' => '/project', 'icon' => 'sparkle'],
+                    ['title' => 'Tentang Kami', 'url' => '/about', 'icon' => 'info'],
                     ['title' => 'Audisi', 'url' => '/audition', 'icon' => 'microphone', 'isHot' => true],
                 ] as $page)
-                    <li class="w-full {{ request()->url() === url($page['url']) ? 'font-bold' : '' }} pr-1">
+                    @php
+                        $isActive = $page['url'] === '/'
+                            ? request()->path() === '/'
+                            : request()->is(ltrim($page['url'], '/') . '*');
+                    @endphp
+                    <li class="w-full {{ $isActive ? 'font-bold' : '' }} pr-1">
                         <a
                             href="{{ url($page['url']) }}"
-                            class="is-drawer-close:tooltip is-drawer-close:tooltip-left {{ request()->url() === url($page['url']) ? 'text-primary' : '' }} is-drawer-open:flex is-drawer-open:justify-between is-drawer-open:items-center"
+                            class="is-drawer-close:tooltip is-drawer-close:tooltip-left {{ $isActive ? 'text-primary' : '' }} is-drawer-open:flex is-drawer-open:justify-between is-drawer-open:items-center"
                             data-tip="{{ $page['title'] }}"
                         >
                             <div class="flex gap-3">
@@ -86,6 +97,9 @@
 <script>
     window.pages = [
         { title: 'Halaman Utama', url: '/' },
+        { title: 'Talenta', url: '/talent' },
+        { title: 'Proyek', url: '/project' },
+        { title: 'Tentang Kami', url: '/about' },
         { title: 'Audisi', url: '/audition' },
     ];
 </script>
