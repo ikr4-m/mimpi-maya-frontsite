@@ -266,32 +266,11 @@ class IndexController extends Controller
     public function auditionShow(string $slug): View
     {
         $setting = AuditionSetting::where('slug', $slug)->firstOrFail();
+        $view = "audition.chapters.{$slug}";
 
-        // For archived (hardcoded) chapters, use a dedicated view if it exists
-        $archiveView = "audition.chapters.{$slug}";
-        if (!$setting->is_active && view()->exists($archiveView)) {
-            return view($archiveView, compact('setting'));
-        }
+        abort_unless(view()->exists($view), 404);
 
-        // Active chapter (or archived without dedicated view): use dynamic data
-        $auditionStart = $setting->audition_start;
-        $auditionEnd = $setting->audition_end;
-
-        $timeline = AuditionContent::active()->byType('timeline')->orderBy('sort_order')->get();
-        $requirements = AuditionContent::active()->byType('requirement')->orderBy('sort_order')->get();
-        $benefits = AuditionContent::active()->byType('benefit')->orderBy('sort_order')->get();
-        $contactLinks = AuditionContent::active()->byType('contact_link')->orderBy('sort_order')->get();
-        $aboutCards = AuditionContent::active()->byType('about_card')->orderBy('sort_order')->get();
-
-        $isRegistrationOpen = $auditionStart && $auditionEnd
-            ? now() >= $auditionStart && now() <= $auditionEnd
-            : false;
-
-        return view('audition.index', compact(
-            'setting', 'auditionStart', 'auditionEnd',
-            'timeline', 'requirements', 'benefits', 'contactLinks', 'aboutCards',
-            'isRegistrationOpen'
-        ));
+        return view($view, compact('setting'));
     }
 
     public function auditionForm(string $slug): View
