@@ -176,7 +176,22 @@ function initHeroEntrance(): () => void {
     .fromTo(heroCta, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.3');
 
   if (vts.length)
-    tl.fromTo(vts, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, '-=0.8');
+    tl.fromTo(
+      vts,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        onComplete: () => {
+          vts.forEach((el) => {
+            el.style.willChange = 'transform';
+          });
+        },
+      },
+      '-=0.8',
+    );
 
   tl.fromTo(sparkle, { opacity: 0 }, { opacity: 1, duration: 2.5, ease: 'slow(0.3,0.7,false)' });
   if (auditionSpotlight.length)

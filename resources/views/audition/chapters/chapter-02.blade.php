@@ -234,7 +234,7 @@
             @foreach (array_filter($characters, fn ($c) => $c['mobile']) as $c)
                 <div class="pointer-events-none absolute z-0 w-auto lg:hidden {{ $c['id'] === 'vt1' ? 'h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12' : 'h-[135%] lg:h-[150%] top-0 right-[17.5%] pt-28 pr-8 sm:pt-56 sm:pr-8 lg:pt-36 lg:pr-12' }}">
                     <div class="h-full w-auto max-w-none drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]">
-                        <img id="{{ $c['id'] }}-mobile" src="{{ asset($c['src']) }}" alt="{{ $c['alt'] }}" class="hero-vt parallax-vt h-full w-auto max-w-none object-contain opacity-0" data-depth-x="{{ $c['depthX'] }}" data-depth-y="{{ $c['depthY'] }}" @isset($c['duration']) data-duration="{{ $c['duration'] }}" @endisset />
+                        <img id="{{ $c['id'] }}-mobile" src="{{ asset($c['src']) }}" alt="{{ $c['alt'] }}" class="hero-vt parallax-vt h-full w-auto max-w-none object-contain opacity-0 will-change-[transform,opacity]" data-depth-x="{{ $c['depthX'] }}" data-depth-y="{{ $c['depthY'] }}" @isset($c['duration']) data-duration="{{ $c['duration'] }}" @endisset />
                     </div>
                 </div>
             @endforeach
@@ -270,7 +270,7 @@
                         <div class="pointer-events-none absolute h-full inset-x-0 bottom-0 z-0 flex items-end justify-end overflow-visible pr-2 pt-32 lg:pr-10">
                             @foreach ($characters as $c)
                                 <div class="relative flex-shrink-0 mx-[-15rem] first:ml-0 lg:-ml-32 {{ $c['desktopClass'] }}">
-                                    <img id="{{ $c['id'] }}" src="{{ asset($c['src']) }}" alt="{{ $c['alt'] }}" class="hero-vt parallax-vt h-full w-auto max-w-none object-contain opacity-0 drop-shadow-[0_0_30px_rgba(234,179,8,0.30)]" data-depth-x="{{ $c['depthX'] }}" data-depth-y="{{ $c['depthY'] }}" @isset($c['duration']) data-duration="{{ $c['duration'] }}" @endisset />
+                                    <img id="{{ $c['id'] }}" src="{{ asset($c['src']) }}" alt="{{ $c['alt'] }}" class="hero-vt parallax-vt h-full w-auto max-w-none object-contain opacity-0 drop-shadow-[0_0_30px_rgba(234,179,8,0.30)] will-change-[transform,opacity]" data-depth-x="{{ $c['depthX'] }}" data-depth-y="{{ $c['depthY'] }}" @isset($c['duration']) data-duration="{{ $c['duration'] }}" @endisset />
                                 </div>
                             @endforeach
                         </div>
