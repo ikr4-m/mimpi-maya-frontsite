@@ -8,7 +8,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/ts/app.ts',
-                'resources/ts/audition.ts',
+                'resources/ts/audition.chapter02.ts',
             ],
             refresh: true,
         }),

@@ -14,6 +14,11 @@ class AuditionSettingForm
     {
         return $schema
             ->components([
+                TextInput::make('slug')
+                    ->required()
+                    ->unique(ignoreRecord: true)
+                    ->alphaDash()
+                    ->helperText('URL identifier, e.g. "chapter-03"'),
                 TextInput::make('form_url')
                     ->url(),
                 DateTimePicker::make('audition_start')

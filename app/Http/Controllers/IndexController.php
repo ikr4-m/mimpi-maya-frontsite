@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AuditionSetting;
 use App\Models\AuditionContent;
 use Illuminate\Contracts\View\View;
-// use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class IndexController extends Controller
 {
@@ -250,11 +250,32 @@ class IndexController extends Controller
         ];
     }
 
-    public function audition(): View
+    public function auditionIndex(): View|RedirectResponse
     {
-        $setting = AuditionSetting::query()->first();
-        $auditionStart = $setting?->audition_start;
-        $auditionEnd = $setting?->audition_end;
+        $active = AuditionSetting::where('is_active', true)->first();
+
+        if ($active) {
+            return redirect()->route('index.audition.show', $active->slug);
+        }
+
+        // No active audition → show archive list
+        $chapters = AuditionSetting::orderByDesc('audition_end')->get();
+        return view('audition.archive', compact('chapters'));
+    }
+
+    public function auditionShow(string $slug): View
+    {
+        $setting = AuditionSetting::where('slug', $slug)->firstOrFail();
+
+        // For archived (hardcoded) chapters, use a dedicated view if it exists
+        $archiveView = "audition.chapters.{$slug}";
+        if (!$setting->is_active && view()->exists($archiveView)) {
+            return view($archiveView, compact('setting'));
+        }
+
+        // Active chapter (or archived without dedicated view): use dynamic data
+        $auditionStart = $setting->audition_start;
+        $auditionEnd = $setting->audition_end;
 
         $timeline = AuditionContent::active()->byType('timeline')->orderBy('sort_order')->get();
         $requirements = AuditionContent::active()->byType('requirement')->orderBy('sort_order')->get();
@@ -273,9 +294,9 @@ class IndexController extends Controller
         ));
     }
 
-    public function auditionForm(): View
+    public function auditionForm(string $slug): View
     {
-        $formUrl = AuditionSetting::query()->first()?->form_url;
+        $formUrl = AuditionSetting::where('slug', $slug)->firstOrFail()->form_url;
         return view('audition.form', compact('formUrl'));
     }
 }

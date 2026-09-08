@@ -15,6 +15,8 @@ class AuditionSettingsTable
     {
         return $table
             ->columns([
+                TextColumn::make('slug')
+                    ->searchable(),
                 TextColumn::make('form_url')
                     ->searchable(),
                 TextColumn::make('audition_start')

@@ -11,7 +11,7 @@ class AuditionSeeder extends Seeder
     public function run(): void
     {
         AuditionSetting::firstOrCreate(
-            ['id' => 1],
+            ['slug' => 'chapter-02'],
             [
                 'form_url' => '',
                 'audition_start' => '2026-07-10 00:00:00',

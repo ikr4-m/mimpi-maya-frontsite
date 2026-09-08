@@ -28,11 +28,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionSetting whereIsActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionSetting whereTagline($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionSetting whereUpdatedAt($value)
+ * @property string|null $slug
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionSetting whereSlug($value)
  * @mixin \Eloquent
  */
 class AuditionSetting extends Model
 {
     protected $fillable = [
+        'slug',
         'form_url',
         'audition_start',
         'audition_end',
@@ -41,6 +44,17 @@ class AuditionSetting extends Model
         'about_description',
         'is_active',
     ];
+
+    protected static function booted(): void
+    {
+        static::saving(function (AuditionSetting $model) {
+            if ($model->is_active) {
+                static::where('id', '!=', $model->id ?? 0)
+                    ->where('is_active', true)
+                    ->update(['is_active' => false]);
+            }
+        });
+    }
 
     protected function casts(): array
     {

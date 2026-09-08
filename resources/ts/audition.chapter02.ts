@@ -330,7 +330,7 @@ function initScrollAnimations(): void {
 }
 
 // --- Main init ---
-window.addEventListener('load', () => {
+function init() {
   initLenis();
 
   ScrollTrigger.refresh();
@@ -342,4 +342,10 @@ window.addEventListener('load', () => {
     initSparkleCanvas();
     initParallax();
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

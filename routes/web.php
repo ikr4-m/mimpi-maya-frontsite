@@ -21,7 +21,8 @@ Route::controller(IndexController::class)
     Route::prefix('/audition')
         ->name('audition.')
         ->group(fn () => [
-        Route::get('/', 'audition')->name('index'),
-        Route::get('/form', 'auditionForm')->name('form'),
+        Route::get('/', 'auditionIndex')->name('index'),
+        Route::get('/{slug}', 'auditionShow')->name('show'),
+        Route::get('/{slug}/form', 'auditionForm')->name('form'),
     ]),
 ]);

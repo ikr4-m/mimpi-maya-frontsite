@@ -1,4 +1,7 @@
-<x-app-layout title="Audition">
+<x-app-layout title="Audition - Chapter 02">
+    @push('head_scripts')
+        @vite(['resources/ts/audition.chapter02.ts'])
+    @endpush
     <x-slot:subnav>
         <div
             x-data="{
@@ -45,7 +48,7 @@
                 @click.prevent="window.__lenis ? window.__lenis.scrollTo('#cta-section', { offset: -70 }) : document.querySelector('#cta-section')?.scrollIntoView({ behavior: 'smooth' })"
                 :class="activeSection === 'cta-section' ? 'text-primary font-semibold bg-primary/15 rounded-md px-2 py-0.5 shadow-sm' : 'text-base-content/60 hover:text-primary transition-all px-1.5 py-0.5 cursor-pointer'"
             >
-                Form
+                Kontak
             </a>
             <span class="text-base-content/20 select-none">/</span>
 
@@ -90,8 +93,109 @@
     @push('head_meta')
         <meta property="og:image" content="{{ asset('images/audition/mm-chap2-og-img.webp') }}" />
         <meta property="og:title" content="Chapter 02: Your Voice. Your Character. Your Story." />
-        <meta property="og:description" content="Siapkan dirimu untuk audisi Chapter 02 MIMPI MAYA sekarang!" />
+        <meta property="og:description" content="Audisi Chapter 02 MIMPI MAYA telah ditutup." />
     @endpush
+
+    {{--
+    |--------------------------------------------------------------------------
+    | Chapter 02 — Archived Audition (Hardcoded Snapshot)
+    |--------------------------------------------------------------------------
+    | Frozen copy of the live audition page. All data is static.
+    | $setting is passed from the controller (AuditionSetting model instance).
+    --}}
+
+    @php
+        $tagline = 'Your Voice. Your Character. Your Story.';
+        $aboutTitle = 'Apa sih ini?';
+        $aboutDescription = "Diluncurkan pada Agustus 2024, MIMPI MAYA hadir untuk mengembangkan industri hiburan lewat penciptaan Virtual Talent. Kami berkomitmen menghadirkan hiburan berkualitas tinggi serta membangun lingkungan yang interaktif bagi audiens maupun talent.\n\nDengan semangat ini, MIMPI MAYA kini membuka audisi resmi. Kami mengundang kamu yang ingin mengekspresikan diri tanpa batas di dunia digital untuk tumbuh bersama agensi yang suportif. Siapkan dirimu, dan ikuti audisinya!";
+
+        $auditionStart = '10 JULY 2026';
+        $auditionEnd = '10 AUGUST 2026';
+
+        $timeline = [
+            (object) ['date' => \Carbon\Carbon::parse('2026-07-10'), 'title' => 'Pendaftaran Dibuka', 'description' => 'Periode pendaftaran resmi dibuka untuk semua calon Virtual Liver.'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-10'), 'title' => 'Pendaftaran Ditutup', 'description' => 'Batas akhir pengiriman formulir dan sample audisi.'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-11'), 'title' => 'Interview 1', 'description' => 'Sesi perkenalan dan diskusi singkat.'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-18'), 'title' => 'Interview 2', 'description' => 'Sesi penyaringan lebih mendalam terkait komitmen, kesiapan, dan visi kontenmu.'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-25'), 'title' => 'Persiapan Debut', 'description' => 'Pengumuman akhir dan persiapan debut.'],
+        ];
+
+        $requirements = [
+            (object) ['icon' => 'check-circle', 'title' => 'Berusia 18+', 'description' => 'Minimal berusia 18 tahun saat pendaftaran dibuka.'],
+            (object) ['icon' => 'check-circle', 'title' => 'WNI', 'description' => 'Pendaftar wajib tinggal, berdomisili, dan hidup di Indonesia.'],
+            (object) ['icon' => 'book-open', 'title' => 'Komitmen Konten', 'description' => 'Bersedia membuat konten secara konsisten sesuai jadwal.'],
+            (object) ['icon' => 'calendar', 'title' => 'Waktu Luang', 'description' => 'Memiliki jadwal yang fleksibel untuk streaming dan meeting.'],
+            (object) ['icon' => 'check-circle', 'title' => 'Koneksi Stabil', 'description' => 'Internet yang cukup untuk live streaming tanpa kendala.'],
+            (object) ['icon' => 'users-three', 'title' => 'Tidak Jaim', 'description' => 'Semua orang di dalam sini gila kok!'],
+        ];
+
+        $benefits = [
+            (object) ['icon' => 'gift', 'title' => 'Alat Livestream', 'description' => 'Peralatan streaming dan rekaman disediakan agar kamu bisa fokus berkonten.'],
+            (object) ['icon' => 'user', 'title' => 'Aset Virtual dan Karakter', 'description' => 'Disediakan sepenuhnya oleh Mimpi Maya (yang ada di spoiler btw).'],
+            (object) ['icon' => 'gear', 'title' => 'Manajemen', 'description' => 'Tim manajemen profesional membantu jadwal, strategi, dan pengembangan karirmu.'],
+            (object) ['icon' => 'trend-up', 'title' => 'Marketing', 'description' => 'Pusing urusan Personal Branding? Ada abang-abangannya di sini.'],
+            (object) ['icon' => 'crown', 'title' => 'Komunitas & Dukungan', 'description' => 'Bergabung dengan komunitas kreator yang saling support dan berkembang bersama.'],
+        ];
+
+        $aboutCards = [
+            (object) ['icon' => 'microphone', 'title' => 'Your Voice', 'description' => 'Biarkan dunia mendengar ciri khas dan keunikan suaramu.'],
+            (object) ['icon' => 'user', 'title' => 'Your Character', 'description' => 'Desain avatar virtual yang beneran mencerminkan persona unikmu.'],
+            (object) ['icon' => 'book-open', 'title' => 'Your Story', 'description' => 'Buat konten menarik yang bikin audiens betah dan terhubung.'],
+        ];
+
+        $contactLinks = [
+            (object) ['label' => 'Instagram', 'url' => 'https://www.instagram.com/mimpimaya_/', 'icon' => 'instagram-logo'],
+            (object) ['label' => 'Twitter / X', 'url' => 'https://x.com/mimpimaya_', 'icon' => 'x-logo'],
+            (object) ['label' => 'YouTube', 'url' => 'https://www.youtube.com/@MimpiMaya', 'icon' => 'youtube-logo'],
+            (object) ['label' => 'Email', 'url' => 'mailto:mimpimayamedia@gmail.com', 'icon' => 'envelope'],
+        ];
+
+        $characters = [
+            [
+                'id' => 'kuroko',
+                'src' => 'images/talents/kuroko-dille.webp',
+                'alt' => 'kuroko',
+                'mobile' => false,
+                'desktopClass' => 'h-[220%]',
+                'depthX' => -10, 'depthY' => -5
+            ],
+            [
+                'id' => 'anne',
+                'src' => 'images/talents/anne-droitte.webp',
+                'alt' => 'anne',
+                'mobile' => false,
+                'desktopClass' => 'h-[192%]',
+                'depthX' => -8,  'depthY' => -4
+            ],
+            [
+                'id' => 'maung',
+                'src' => 'images/talents/biyu-nara.webp',
+                'alt' => 'maung',
+                'mobile' => false,
+                'desktopClass' => 'h-[165%]',
+                'depthX' => -6,  'depthY' => -3
+            ],
+            [
+                'id' => 'vt1',
+                'src' => 'images/audition/vt1-trim.webp',
+                'alt' => 'vt1',
+                'mobile' => true,
+                'desktopClass' => 'h-[200%]',
+                'depthX' => -25,
+                'depthY' => -10, 'duration' => 1.5
+            ],
+            [
+                'id' => 'vt2',
+                'src' => 'images/audition/vt2-trim.webp',
+                'alt' => 'vt2',
+                'mobile' => true,
+                'desktopClass' => 'h-[155%]',
+                'depthX' => -12,
+                'depthY' => -6,
+                'duration' => 1.8
+            ],
+        ];
+    @endphp
 
     <div id="audition-root" class="relative bg-base-100">
         {{-- ===== HERO & ABOUT WRAPPER ===== --}}
@@ -126,54 +230,6 @@
                 class="relative flex min-h-[calc(100dvh-4rem)] items-end pb-16 pt-24 lg:min-h-[calc(100vh-4rem)] lg:pb-20 lg:pt-28"
             >
 
-            @php
-                $characters = [
-                    [
-                        'id' => 'kuroko',
-                        'src' => 'images/talents/kuroko-dille.webp',
-                        'alt' => 'kuroko',
-                        'mobile' => false,
-                        'desktopClass' => 'h-[220%]',
-                        'depthX' => -10, 'depthY' => -5
-                    ],
-                    [
-                        'id' => 'anne',
-                        'src' => 'images/talents/anne-droitte.webp',
-                        'alt' => 'anne',
-                        'mobile' => false,
-                        'desktopClass' => 'h-[192%]',
-                        'depthX' => -8,  'depthY' => -4
-                    ],
-                    [
-                        'id' => 'maung',
-                        'src' => 'images/talents/biyu-nara.webp',
-                        'alt' => 'maung',
-                        'mobile' => false,
-                        'desktopClass' => 'h-[165%]',
-                        'depthX' => -6,  'depthY' => -3
-                    ],
-                    [
-                        'id' => 'vt1',
-                        'src' => 'images/audition/vt1-trim.webp',
-                        'alt' => 'vt1',
-                        'mobile' => true,
-                        'desktopClass' => 'h-[200%]',
-                        'depthX' => -25,
-                        'depthY' => -10, 'duration' => 1.5
-                    ],
-                    [
-                        'id' => 'vt2',
-                        'src' => 'images/audition/vt2-trim.webp',
-                        'alt' => 'vt2',
-                        'mobile' => true,
-                        'desktopClass' => 'h-[155%]',
-                        'depthX' => -12,
-                        'depthY' => -6,
-                        'duration' => 1.8
-                    ],
-                ];
-            @endphp
-
             {{-- VT Characters (mobile: only vt1 & vt2) --}}
             @foreach (array_filter($characters, fn ($c) => $c['mobile']) as $c)
                 <div class="pointer-events-none absolute z-0 w-auto lg:hidden {{ $c['id'] === 'vt1' ? 'h-[150%] lg:h-[175%] top-0 right-0 max-sm:right-[-25%] pt-6 pr-2 sm:pt-8 sm:pr-8 lg:pt-12 lg:pr-12' : 'h-[135%] lg:h-[150%] top-0 right-[17.5%] pt-28 pr-8 sm:pt-56 sm:pr-8 lg:pt-36 lg:pr-12' }}">
@@ -189,38 +245,28 @@
                         <img id="chapter-hero" src="{{ asset('images/audition/chapter-hero.webp') }}" alt="Chapter 02" class="h-14 w-auto opacity-0 lg:h-16" />
                         <img id="title-hero" src="{{ asset('images/audition/audition-title-hero.webp') }}" alt="Virtual Liver Audition" class="w-full max-w-lg opacity-0 lg:max-w-xl" />
                             <p id="tagline" class="font-share-tech text-lg tracking-[0.2em] text-primary/90 uppercase opacity-0 lg:text-xl">
-                                {{ $setting?->tagline ?? 'Your Voice. Your Character. Your Story.' }}
+                                {{ $tagline }}
                             </p>
 
                         <div id="date-badge" class="inline-flex items-center gap-3 rounded-full border border-primary/50 bg-primary/10 px-5 py-2.5 text-primary opacity-0 shadow-[0_0_20px_rgba(234,179,8,0.15)] lg:px-6 lg:py-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M208 32h-24v-8a8 8 0 0 0-16 0v8H88v-8a8 8 0 0 0-16 0v8H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16Zm0 176H48V48h24v8a8 8 0 0 0 16 0v-8h80v8a8 8 0 0 0 16 0v-8h24Zm-16-80h-48v48h48Zm-64 0H80v48h48Zm0-16v-48H80v48Zm16 0h48V80h-48Z"/></svg>
                             <span class="font-bold tracking-wider text-sm lg:text-base">
-                                {{ $auditionStart ? strtoupper($auditionStart->format('d F Y')) : '-' }} - {{ $auditionEnd ? strtoupper($auditionEnd->format('d F Y')) : '-' }}
+                                {{ $auditionStart }} - {{ $auditionEnd }}
                             </span>
                         </div>
 
                         <div id="hero-cta" class="flex flex-wrap items-center gap-3 opacity-0 lg:gap-4">
-                            <a href="{{ route('index.audition.form', $setting->slug) }}" class="btn btn-primary group shadow-[0_0_20px_rgba(234,179,8,0.25)] transition-shadow hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]">
-                                Daftar Sekarang
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" class="transition-transform group-hover:translate-x-1"><path d="M224.49 136.49l-72 72a12 12 0 0 1-17-17L187 140H40a12 12 0 0 1 0-24h147l-51.49-51.52a12 12 0 0 1 17-17l72 72a12 12 0 0 1-.02 17.01Z"/></svg>
-                            </a>
-                            <a href="#about" class="btn btn-outline btn-primary">
-                                Pelajari Lebih Lanjut
-                            </a>
+                            <span class="btn btn-disabled btn-primary">
+                                Audisi Telah Ditutup
+                            </span>
                         </div>
 
-                        @if (!$isRegistrationOpen && $auditionStart && $auditionEnd)
-                            <p class="text-sm text-base-content/60">
-                                @if (now() < $auditionStart)
-                                    Pendaftaran dibuka {{ $auditionStart->format('d F Y') }}
-                                @else
-                                    Pendaftaran telah ditutup pada {{ $auditionEnd->format('d F Y') }}
-                                @endif
-                            </p>
-                        @endif
+                        <p class="text-sm text-base-content/60">
+                            Pendaftaran telah ditutup pada 10 August 2026
+                        </p>
                     </div>
 
-                    <div class="order-1 relative hidden h-[150%] top-[36rem] lg:order-2 lg:block">
+                    <div class="order-1 relative hidden h-[150%] top-[42rem] lg:order-2 lg:block">
                         <div class="pointer-events-none absolute h-full inset-x-0 bottom-0 z-0 flex items-end justify-end overflow-visible pr-2 pt-32 lg:pr-10">
                             @foreach ($characters as $c)
                                 <div class="relative flex-shrink-0 mx-[-15rem] first:ml-0 lg:-ml-32 {{ $c['desktopClass'] }}">
@@ -239,9 +285,9 @@
                 <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
                     <div id="about-heading" class="space-y-5">
                         <span class="text-sm font-bold tracking-[0.2em] text-primary uppercase">About</span>
-                        <h2 class="text-3xl font-bold leading-tight lg:text-5xl">{{ $setting?->about_title ?? 'Apa sih ini?' }}</h2>
-                        <div class="space-y-4 text-base leading-relaxed text-base-content/80 lg:text-lg">
-                            {!! nl2br(e($setting?->about_description ?? '')) !!}
+                        <h2 class="text-3xl font-bold leading-tight lg:text-5xl">{{ $aboutTitle }}</h2>
+                        <div class="space-y-4 rounded-lg border border-base-300/50 bg-base-200/50 p-5 text-base leading-relaxed text-base-content lg:p-6 lg:text-lg">
+                            {!! nl2br(e($aboutDescription)) !!}
                         </div>
                     </div>
 
@@ -278,33 +324,23 @@
                     <div id="timeline-line" class="absolute top-0 bottom-0 left-6 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20 lg:left-1/2 lg:-translate-x-1/2"></div>
 
                     <div class="space-y-8 lg:space-y-12">
-                        @php $now = now(); @endphp
                         @foreach ($timeline as $index => $item)
                             @php
-                                $itemDate = $item->date;
-                                if ($now < $itemDate) {
-                                    $status = 'upcoming';
-                                } elseif (!isset($timeline[$index + 1])) {
-                                    $status = 'active';
-                                } else {
-                                    $nextDate = $timeline[$index + 1]->date;
-                                    $status = $now < $nextDate ? 'active' : 'completed';
-                                }
+                                // All timeline items are completed for this archive
+                                $status = 'completed';
                                 $isLeft = $index % 2 === 0;
                             @endphp
 
                             <div class="timeline-item relative flex items-center gap-6 lg:gap-0 {{ $isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse' }}">
-                                <div class="absolute left-6 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-base-100 lg:left-1/2 {{ $status === 'completed' ? 'bg-primary' : ($status === 'active' ? 'bg-base-100 ring-2 ring-primary' : 'bg-base-300') }}"></div>
+                                <div class="absolute left-6 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-base-100 lg:left-1/2 bg-primary"></div>
 
                                 <div class="ml-14 flex-1 lg:ml-0 lg:w-[45%] {{ $isLeft ? 'lg:pr-12' : 'lg:pl-12' }}">
-                                    <div class="card border bg-base-200 p-5 transition-all duration-300 hover:-translate-y-1 {{ $status === 'active' ? 'border-primary shadow-[0_0_25px_rgba(234,179,8,0.15)]' : 'border-base-300 hover:border-primary/40' }}">
+                                    <div class="card border bg-base-200 p-5 transition-all duration-300 hover:-translate-y-1 border-base-300 hover:border-primary/40">
                                         <div class="flex flex-wrap items-center justify-between gap-2">
                                             <h3 class="text-lg font-bold">{{ $item->title }}</h3>
-                                            <span class="badge text-xs {{ $status === 'completed' ? 'badge-primary' : ($status === 'active' ? 'badge-outline badge-primary' : 'badge-ghost') }}">
-                                                {{ $status === 'completed' ? 'Selesai' : ($status === 'active' ? 'Sedang Berlangsung' : 'Mendatang') }}
-                                            </span>
+                                            <span class="badge text-xs badge-primary">Selesai</span>
                                         </div>
-                                        <p class="mt-1 text-sm font-semibold text-primary">{{ $itemDate?->format('d F Y') }}</p>
+                                        <p class="mt-1 text-sm font-semibold text-primary">{{ $item->date?->format('d F Y') }}</p>
                                         <p class="mt-2 text-sm text-base-content/70">{{ $item->description }}</p>
                                     </div>
                                 </div>
@@ -365,20 +401,20 @@
             </div>
         </section>
 
-        {{-- ===== CTA SECTION ===== --}}
+        {{-- ===== CTA SECTION (Archive — no form link) ===== --}}
         <section id="cta-section" class="relative py-24 lg:py-40">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(234,179,8,0.1),_transparent_60%)]"></div>
 
             <div class="container relative z-10 mx-auto px-6">
                 <div id="cta-content" class="mx-auto max-w-3xl text-center">
-                    <h2 class="text-3xl font-bold leading-tight lg:text-6xl">Siap Jadi Virtual Liver Berikutnya?</h2>
+                    <h2 class="text-3xl font-bold leading-tight lg:text-6xl">Audisi Chapter 02 Telah Berakhir</h2>
                     <p class="mx-auto mt-5 max-w-xl text-base-content/70 lg:text-lg">
-                        Daftarkan dirimu sekarang dan mulai perjalananmu bersama Mimpi Maya.
+                        Terima kasih kepada semua yang telah mendaftar. Nantikan audisi berikutnya!
                     </p>
 
                     <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <a href="{{ route('index.audition.form', $setting->slug) }}" class="btn btn-primary group animate-pulse shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-shadow hover:shadow-[0_0_45px_rgba(234,179,8,0.5)]">
-                            Daftar Sekarang
+                        <a href="{{ route('index.audition.index') }}" class="btn btn-primary group shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-shadow hover:shadow-[0_0_45px_rgba(234,179,8,0.5)]">
+                            Lihat Audisi Lainnya
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" class="transition-transform group-hover:translate-x-1"><path d="M224.49 136.49l-72 72a12 12 0 0 1-17-17L187 140H40a12 12 0 0 1 0-24h147l-51.49-51.52a12 12 0 0 1 17-17l72 72a12 12 0 0 1-.02 17.01Z"/></svg>
                         </a>
                     </div>
@@ -397,4 +433,5 @@
             </div>
         </section>
     </div>
+
 </x-app-layout>

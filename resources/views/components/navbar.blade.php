@@ -54,7 +54,7 @@
                     ['title' => 'Talenta', 'url' => '/talent', 'icon' => 'users'],
                     ['title' => 'Proyek', 'url' => '/project', 'icon' => 'sparkle'],
                     ['title' => 'Tentang Kami', 'url' => '/about', 'icon' => 'info'],
-                    ['title' => 'Audisi', 'url' => '/audition', 'icon' => 'microphone', 'isHot' => true],
+                    ['title' => 'Audisi', 'url' => '/audition', 'icon' => 'microphone'],
                 ] as $page)
                     @php
                         $isActive = $page['url'] === '/'
