@@ -113,11 +113,11 @@
         $auditionEnd = '10 AUGUST 2026';
 
         $timeline = [
-            (object) ['date' => \Carbon\Carbon::parse('2026-07-10'), 'title' => 'Pendaftaran Dibuka', 'description' => 'Periode pendaftaran resmi dibuka untuk semua calon Virtual Liver.'],
-            (object) ['date' => \Carbon\Carbon::parse('2026-08-10'), 'title' => 'Pendaftaran Ditutup', 'description' => 'Batas akhir pengiriman formulir dan sample audisi.'],
-            (object) ['date' => \Carbon\Carbon::parse('2026-08-11'), 'title' => 'Interview 1', 'description' => 'Sesi perkenalan dan diskusi singkat.'],
-            (object) ['date' => \Carbon\Carbon::parse('2026-08-18'), 'title' => 'Interview 2', 'description' => 'Sesi penyaringan lebih mendalam terkait komitmen, kesiapan, dan visi kontenmu.'],
-            (object) ['date' => \Carbon\Carbon::parse('2026-08-25'), 'title' => 'Persiapan Debut', 'description' => 'Pengumuman akhir dan persiapan debut.'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-07-10'), 'title' => 'Pendaftaran Dibuka', 'description' => 'Periode pendaftaran resmi dibuka untuk semua calon Virtual Liver.', 'status' => 'completed'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-10'), 'title' => 'Pendaftaran Ditutup', 'description' => 'Batas akhir pengiriman formulir dan sample audisi.', 'status' => 'completed'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-18'), 'title' => 'Interview 1', 'description' => 'Sesi perkenalan dan diskusi singkat.', 'status' => 'completed'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-24'), 'title' => 'Interview 2', 'description' => 'Sesi penyaringan lebih mendalam terkait komitmen, kesiapan, dan visi kontenmu.', 'status' => 'completed'],
+            (object) ['date' => \Carbon\Carbon::parse('2026-08-31'), 'title' => 'Persiapan Debut & Sekolah Personal Branding', 'description' => 'Pengumuman akhir dan persiapan debut.', 'status' => 'active'],
         ];
 
         $requirements = [
@@ -326,19 +326,20 @@
                     <div class="space-y-8 lg:space-y-12">
                         @foreach ($timeline as $index => $item)
                             @php
-                                // All timeline items are completed for this archive
-                                $status = 'completed';
+                                $status = $item->status ?? 'completed';
                                 $isLeft = $index % 2 === 0;
                             @endphp
 
                             <div class="timeline-item relative flex items-center gap-6 lg:gap-0 {{ $isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse' }}">
-                                <div class="absolute left-6 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-base-100 lg:left-1/2 bg-primary"></div>
+                                <div class="absolute left-6 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-base-100 lg:left-1/2 {{ $status === 'active' ? 'bg-base-100 ring-2 ring-primary' : 'bg-primary' }}"></div>
 
                                 <div class="ml-14 flex-1 lg:ml-0 lg:w-[45%] {{ $isLeft ? 'lg:pr-12' : 'lg:pl-12' }}">
-                                    <div class="card border bg-base-200 p-5 transition-all duration-300 hover:-translate-y-1 border-base-300 hover:border-primary/40">
+                                    <div class="card border bg-base-200 p-5 transition-all duration-300 hover:-translate-y-1 {{ $status === 'active' ? 'border-primary shadow-[0_0_25px_rgba(234,179,8,0.15)]' : 'border-base-300 hover:border-primary/40' }}">
                                         <div class="flex flex-wrap items-center justify-between gap-2">
                                             <h3 class="text-lg font-bold">{{ $item->title }}</h3>
-                                            <span class="badge text-xs badge-primary">Selesai</span>
+                                            <span class="badge text-xs {{ $status === 'active' ? 'badge-outline badge-primary' : 'badge-primary' }}">
+                                                {{ $status === 'active' ? 'Sedang Berlangsung' : 'Selesai' }}
+                                            </span>
                                         </div>
                                         <p class="mt-1 text-sm font-semibold text-primary">{{ $item->date?->format('d F Y') }}</p>
                                         <p class="mt-2 text-sm text-base-content/70">{{ $item->description }}</p>
