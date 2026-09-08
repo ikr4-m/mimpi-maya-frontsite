@@ -8,9 +8,11 @@
 
     <div class="drawer-content">
         <nav class="navbar bg-base-100 border-b border-base-300 w-full sticky top-0 z-20">
-            <div class="flex flex-1 items-center gap-3.5 pl-2">
-                <img src="{{ asset('images/logo.webp') }}" alt="Mimpi Maya" class="h-10 w-auto" />
-                <img src="{{ asset('images/title.webp') }}" alt="Mimpi Maya" class="h-7 w-auto" />
+            <div class="flex flex-1 items-center pl-2">
+                <a href="{{ url('/') }}" class="flex items-center gap-3.5">
+                    <img src="{{ asset('images/logo.webp') }}" alt="Mimpi Maya" class="h-10 w-auto" />
+                    <img src="{{ asset('images/title.webp') }}" alt="Mimpi Maya" class="h-7 w-auto" />
+                </a>
             </div>
 
             <div class="flex flex-row items-center gap-1">
