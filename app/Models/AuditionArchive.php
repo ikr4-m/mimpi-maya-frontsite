@@ -14,6 +14,19 @@ use Illuminate\Support\Carbon;
  * @property Carbon $audition_end
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read string $link_url
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereAuditionEnd($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereAuditionStart($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class AuditionArchive extends Model
 {

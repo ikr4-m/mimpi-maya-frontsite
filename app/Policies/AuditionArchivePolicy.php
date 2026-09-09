@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use Illuminate\Foundation\Auth\User as AuthUser;
 use App\Models\AuditionArchive;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AuditionArchivePolicy
 {
     use HandlesAuthorization;
-
+    
     public function viewAny(AuthUser $authUser): bool
     {
         return $authUser->can('ViewAny:AuditionArchive');
@@ -71,4 +71,5 @@ class AuditionArchivePolicy
     {
         return $authUser->can('Reorder:AuditionArchive');
     }
+
 }
