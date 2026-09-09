@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AuditionSetting;
+use App\Models\AuditionArchive;
 use App\Models\AuditionContent;
+use App\Models\AuditionSetting;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -252,20 +253,21 @@ class IndexController extends Controller
 
     public function auditionIndex(): View|RedirectResponse
     {
-        $active = AuditionSetting::where('is_active', true)->first();
+        $active = AuditionSetting::where('is_active', true)->whereNotNull('slug')->first();
 
         if ($active) {
             return redirect()->route('index.audition.show', $active->slug);
         }
 
         // No active audition → show archive list
-        $chapters = AuditionSetting::orderByDesc('audition_end')->get();
+        $chapters = AuditionArchive::orderByDesc('audition_end')->get();
         return view('audition.archive', compact('chapters'));
     }
 
     public function auditionShow(string $slug): View
     {
-        $setting = AuditionSetting::where('slug', $slug)->firstOrFail();
+        $setting = AuditionSetting::where('slug', $slug)->first()
+            ?? AuditionArchive::where('slug', $slug)->firstOrFail();
         $view = "audition.chapters.{$slug}";
 
         abort_unless(view()->exists($view), 404);

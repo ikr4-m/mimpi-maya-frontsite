@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AuditionArchive;
 use App\Models\AuditionContent;
 use App\Models\AuditionSetting;
 use Illuminate\Database\Seeder;
@@ -10,6 +11,16 @@ class AuditionSeeder extends Seeder
 {
     public function run(): void
     {
+        AuditionArchive::firstOrCreate(
+            ['slug' => 'chapter-02'],
+            [
+                'name' => 'Chapter 02',
+                'description' => 'Your Voice. Your Character. Your Story.',
+                'audition_start' => '2026-07-10 00:00:00',
+                'audition_end' => '2026-08-10 23:59:59',
+            ]
+        );
+
         AuditionSetting::firstOrCreate(
             ['slug' => 'chapter-02'],
             [

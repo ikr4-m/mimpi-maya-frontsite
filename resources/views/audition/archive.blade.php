@@ -24,22 +24,22 @@
                 <div class="grid gap-6 md:grid-cols-2">
                     @foreach($chapters as $chapter)
                         <a
-                            href="{{ route('index.audition.show', $chapter->slug) }}"
+                            href="{{ str_starts_with($chapter->slug, 'http') ? $chapter->slug : route('index.audition.show', $chapter->slug) }}"
                             class="group block rounded-2xl border border-base-content/10 bg-base-200/50 p-6 text-left transition hover:border-primary/40 hover:bg-primary/5"
                         >
                             <div class="flex items-center justify-between mb-3">
                                 <h2 class="text-xl font-semibold text-base-content group-hover:text-primary transition">
-                                    {{ str($chapter->slug)->replace('-', ' ')->title() }}
+                                    {{ $chapter->name }}
                                 </h2>
-                                @if($chapter->is_active)
+                                @if(now()->between($chapter->audition_start, $chapter->audition_end))
                                     <span class="badge badge-primary badge-sm">Aktif</span>
                                 @else
                                     <span class="badge badge-ghost badge-sm">Selesai</span>
                                 @endif
                             </div>
 
-                            @if($chapter->tagline)
-                                <p class="text-sm text-base-content/60 mb-3">{{ $chapter->tagline }}</p>
+                            @if($chapter->description)
+                                <p class="text-sm text-base-content/60 mb-3">{{ $chapter->description }}</p>
                             @endif
 
                             <div class="text-xs text-base-content/40">
