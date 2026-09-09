@@ -18,6 +18,7 @@ class AuditionSeeder extends Seeder
                 'description' => 'Your Voice. Your Character. Your Story.',
                 'audition_start' => '2026-07-10 00:00:00',
                 'audition_end' => '2026-08-10 23:59:59',
+                'thumbnails' => ['images/audition/chapter-02/mm-chap2-og-img.webp'],
             ]
         );
 

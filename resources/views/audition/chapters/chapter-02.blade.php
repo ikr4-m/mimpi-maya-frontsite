@@ -91,7 +91,7 @@
         </div>
     </x-slot:subnav>
     @push('head_meta')
-        <meta property="og:image" content="{{ asset('images/audition/mm-chap2-og-img.webp') }}" />
+        <meta property="og:image" content="{{ asset('images/audition/chapter-02/mm-chap2-og-img.webp') }}" />
         <meta property="og:title" content="Chapter 02: Your Voice. Your Character. Your Story." />
         <meta property="og:description" content="Audisi Chapter 02 MIMPI MAYA telah ditutup." />
     @endpush
@@ -177,7 +177,7 @@
             ],
             [
                 'id' => 'vt1',
-                'src' => 'images/audition/vt1-trim.webp',
+                'src' => 'images/audition/chapter-02/vt1-trim.webp',
                 'alt' => 'vt1',
                 'mobile' => true,
                 'desktopClass' => 'h-[200%]',
@@ -186,7 +186,7 @@
             ],
             [
                 'id' => 'vt2',
-                'src' => 'images/audition/vt2-trim.webp',
+                'src' => 'images/audition/chapter-02/vt2-trim.webp',
                 'alt' => 'vt2',
                 'mobile' => true,
                 'desktopClass' => 'h-[155%]',
@@ -242,8 +242,8 @@
             <div class="container relative z-10 mx-auto px-6">
                 <div class="grid items-end gap-8 lg:grid-cols-2 lg:gap-4">
                     <div class="relative z-20 order-2 space-y-5 lg:order-1 lg:space-y-6">
-                        <img id="chapter-hero" src="{{ asset('images/audition/chapter-hero.webp') }}" alt="Chapter 02" class="h-14 w-auto opacity-0 lg:h-16" />
-                        <img id="title-hero" src="{{ asset('images/audition/audition-title-hero.webp') }}" alt="Virtual Liver Audition" class="w-full max-w-lg opacity-0 lg:max-w-xl" />
+                        <img id="chapter-hero" src="{{ asset('images/audition/chapter-02/chapter-hero.webp') }}" alt="Chapter 02" class="h-14 w-auto opacity-0 lg:h-16" />
+                        <img id="title-hero" src="{{ asset('images/audition/chapter-02/audition-title-hero.webp') }}" alt="Virtual Liver Audition" class="w-full max-w-lg opacity-0 lg:max-w-xl" />
                             <p id="tagline" class="font-share-tech text-lg tracking-[0.2em] text-primary/90 uppercase opacity-0 lg:text-xl">
                                 {{ $tagline }}
                             </p>

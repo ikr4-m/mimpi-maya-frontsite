@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AuditionArchives\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -28,6 +29,18 @@ class AuditionArchiveForm
                 DateTimePicker::make('audition_end')
                     ->label('End Audition')
                     ->required(),
+                FileUpload::make('thumbnails')
+                    ->label('OG / Thumbnail Images')
+                    ->image()
+                    ->multiple()
+                    ->reorderable()
+                    ->appendFiles()
+                    ->imageEditor()
+                    ->directory('audition/thumbnails')
+                    ->disk('public')
+                    ->visibility('public')
+                    ->helperText('Upload one or multiple images for social cards and rotated previews.')
+                    ->columnSpanFull(),
                 Textarea::make('description')
                     ->label('Audition Description')
                     ->columnSpanFull(),

@@ -5,7 +5,7 @@
         <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 max-w-4xl mx-auto w-full text-center">
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl mb-5 font-extrabold tracking-tight text-base-content font-share-tech uppercase">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl lg:mb-18 font-extrabold tracking-tight text-base-content font-share-tech uppercase">
                 <span>
                     Arsip <br class="hidden sm:inline" />
                 </span>
@@ -14,10 +14,6 @@
                 </span>
             </h1>
 
-            <p class="text-base-content/60 text-lg mb-12">
-                Daftar audisi yang pernah dibuka oleh Mimpi Maya.
-            </p>
-
             @if($chapters->isEmpty())
                 <p class="text-base-content/40">Belum ada data audisi.</p>
             @else
@@ -25,8 +21,19 @@
                     @foreach($chapters as $chapter)
                         <a
                             href="{{ str_starts_with($chapter->slug, 'http') ? $chapter->slug : route('index.audition.show', $chapter->slug) }}"
-                            class="group block rounded-2xl border border-base-content/10 bg-base-200/50 p-6 text-left transition hover:border-primary/40 hover:bg-primary/5"
+                            class="group block overflow-hidden rounded-2xl border border-base-content/10 bg-base-200/50 p-6 text-left transition hover:border-primary/40 hover:bg-primary/5"
                         >
+                            @if(! empty($chapter->thumbnail_urls))
+                                <div class="relative mb-4 aspect-video w-full overflow-hidden rounded-xl bg-base-300">
+                                    <img
+                                        src="{{ $chapter->random_thumbnail_url }}"
+                                        alt="{{ $chapter->name }}"
+                                        loading="lazy"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+                            @endif
+
                             <div class="flex items-center justify-between mb-3">
                                 <h2 class="text-xl font-semibold text-base-content group-hover:text-primary transition">
                                     {{ $chapter->name }}

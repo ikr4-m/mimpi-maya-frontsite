@@ -36,6 +36,7 @@ class AuditionArchive extends Model
         'slug',
         'audition_start',
         'audition_end',
+        'thumbnails',
     ];
 
     protected function casts(): array
@@ -43,7 +44,42 @@ class AuditionArchive extends Model
         return [
             'audition_start' => 'datetime',
             'audition_end' => 'datetime',
+            'thumbnails' => 'array',
         ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getThumbnailUrlsAttribute(): array
+    {
+        if (empty($this->thumbnails)) {
+            return [];
+        }
+
+        return array_map(function (string $path) {
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+                return $path;
+            }
+
+            if (str_starts_with($path, 'images/')) {
+                return asset($path);
+            }
+
+            return \Illuminate\Support\Facades\Storage::disk('public')->url($path);
+        }, $this->thumbnails);
+    }
+
+    public function getThumbnailUrlAttribute(): ?string
+    {
+        return $this->thumbnail_urls[0] ?? null;
+    }
+
+    public function getRandomThumbnailUrlAttribute(): ?string
+    {
+        $urls = $this->thumbnail_urls;
+
+        return ! empty($urls) ? $urls[array_rand($urls)] : null;
     }
 
     public function getLinkUrlAttribute(): string
