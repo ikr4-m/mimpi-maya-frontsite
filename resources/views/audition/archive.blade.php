@@ -1,9 +1,19 @@
 <x-app-layout title="Audition">
-    <section class="min-h-[60vh] flex flex-col items-center justify-center px-4 py-20">
-        <div class="max-w-4xl mx-auto w-full text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-base-content mb-4">
-                Audition Archive
+    <section class="relative min-h-[60vh] flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+        {{-- Background ambient glow --}}
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_20%,_rgba(234,179,8,0.15),_transparent_60%)] pointer-events-none"></div>
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto w-full text-center">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl mb-5 font-extrabold tracking-tight text-base-content font-share-tech uppercase">
+                <span>
+                    Arsip <br class="hidden sm:inline" />
+                </span>
+                <span class="bg-gradient-to-r from-primary via-amber-200 to-primary bg-clip-text text-transparent">
+                    Audisi
+                </span>
             </h1>
+
             <p class="text-base-content/60 text-lg mb-12">
                 Daftar audisi yang pernah dibuka oleh Mimpi Maya.
             </p>
