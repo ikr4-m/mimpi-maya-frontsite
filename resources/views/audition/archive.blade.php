@@ -17,9 +17,9 @@
                     @foreach($chapters as $chapter)
                     <a
                         href="{{ str_starts_with($chapter->slug, 'http') ? $chapter->slug : route('index.audition.show', $chapter->slug) }}"
-                        class="group flex items-center justify-between gap-4 overflow-hidden rounded-xl border border-base-content/10 bg-base-200/50 text-left transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:scale-[1.01] max-h-[92px]"
+                        class="group flex items-center justify-between gap-4 overflow-hidden rounded-xl border border-base-content/10 bg-base-200/50 text-left transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:scale-[1.01] max-h-[150px]"
                     >
-                        <div class="flex p-2.5 pl-4 items-center gap-3 sm:gap-5 min-w-0 flex-1">
+                        <div class="flex p-3 lg:py-8 lg:pl-4 items-center gap-3 sm:gap-5 min-w-0 flex-1">
                             <div class="min-w-0 flex-1">
                                 <div class="flex items-center gap-2 mb-0.5">
                                     <h2 class="text-base sm:text-lg font-semibold text-base-content group-hover:text-primary transition truncate">
