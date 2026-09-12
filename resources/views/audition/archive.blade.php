@@ -62,8 +62,5 @@
             @endif
         </div>
 
-        <!--<div class="h-screen"></div>
-        <div class="h-screen"></div>
-        <div class="h-screen"></div>-->
     </section>
 </x-app-layout>
