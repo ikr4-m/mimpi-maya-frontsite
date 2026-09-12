@@ -6,7 +6,7 @@
 >
     <input id="nav-drawer" type="checkbox" class="drawer-toggle" x-model="open" />
 
-    <div class="drawer-content">
+    <div class="drawer-content flex flex-col min-h-screen">
         <nav class="navbar bg-base-100 border-b border-base-300 w-full sticky top-0 z-20">
             <div class="flex flex-1 items-center pl-2">
                 <a href="{{ url('/') }}" class="flex items-center gap-3.5">

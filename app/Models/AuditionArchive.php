@@ -26,6 +26,11 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereUpdatedAt($value)
+ * @property array<array-key, mixed>|null $thumbnails
+ * @property-read string|null $random_thumbnail_url
+ * @property-read string|null $thumbnail_url
+ * @property-read string[] $thumbnail_urls
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditionArchive whereThumbnails($value)
  * @mixin \Eloquent
  */
 class AuditionArchive extends Model
