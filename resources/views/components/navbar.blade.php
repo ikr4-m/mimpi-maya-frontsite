@@ -31,6 +31,7 @@
         </nav>
 
         {{ $slot }}
+        <x-footer />
     </div>
 
     <div class="drawer-side is-drawer-close:overflow-visible">
@@ -51,13 +52,7 @@
             </div>
 
             <ul class="menu w-full grow place-content-center gap-2">
-                @foreach([
-                    ['title' => 'Halaman Utama', 'url' => '/', 'icon' => 'house'],
-                    ['title' => 'Talenta', 'url' => '/talent', 'icon' => 'users'],
-                    ['title' => 'Proyek', 'url' => '/project', 'icon' => 'sparkle'],
-                    ['title' => 'Tentang Kami', 'url' => '/about', 'icon' => 'info'],
-                    ['title' => 'Audisi', 'url' => '/audition', 'icon' => 'microphone'],
-                ] as $page)
+                @foreach(config('navigation.main') as $page)
                     @php
                         $isActive = $page['url'] === '/'
                             ? request()->path() === '/'
@@ -97,11 +92,5 @@
 
 {{-- Alpine.js data for page lookup --}}
 <script>
-    window.pages = [
-        { title: 'Halaman Utama', url: '/' },
-        { title: 'Talenta', url: '/talent' },
-        { title: 'Proyek', url: '/project' },
-        { title: 'Tentang Kami', url: '/about' },
-        { title: 'Audisi', url: '/audition' },
-    ];
+    window.pages = @json(config('navigation.main'));
 </script>
